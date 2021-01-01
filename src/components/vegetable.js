@@ -20,7 +20,7 @@ constructor(props){
 }
 componentDidMount()
 {
-    fetch( 'http://192.168.43.220:5050/items')
+    fetch( 'https://urbanreach.herokuapp.com/items')
     .then(res=>res.json())
     .then(data=>{
         this.setState({item:data})
@@ -42,7 +42,7 @@ handleSubmit({values,item}) {
       weight:values.weight,
     }
 
-   fetch( 'http://192.168.43.220:5050/items',{
+   fetch( 'https://urbanreach.herokuapp.com/items',{
       method:"PUT",
       headers:{ "Content-Type":"application/json"},
       body:JSON.stringify(obj)
@@ -55,7 +55,7 @@ handleSubmit({values,item}) {
 
 delete(data)
 {
-    fetch('http://192.168.43.220:5050/items',{
+    fetch('https://urbanreach.herokuapp.com/items',{
         method:"DELETE",
         headers:{ "Content-Type":"application/json"},
         body:JSON.stringify({itemid:data})
