@@ -67,6 +67,9 @@ class Insert extends Component {
                      <Link to={`/milkproduct`} >
                         <Button style={{margin:20}} >Milk Product</Button>
                     </Link>
+                    <Link to={`/delivery`} >
+                        <Button style={{margin:20}} >Delivery</Button>
+                    </Link>
                       <hr/>
                    </div>
                     <div className="col-12 col-md-9">

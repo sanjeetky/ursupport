@@ -3,6 +3,7 @@ import Insert from './insert.js';
 import Vegetable from './vegetable.js';
 import Milk from './milk.js';
 import Grocery from './grocery.js';
+import Delivery from './delivery.js';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 class Main extends Component {
@@ -34,7 +35,11 @@ class Main extends Component {
                 <Grocery />
             );
           };
-          
+          const DeliveryPage = () => {
+            return(
+                <Delivery  />
+            );
+          };
           
         return (
          
@@ -45,6 +50,7 @@ class Main extends Component {
                    <Route exact path='/vegetable' component={VegPage} />
                    <Route exact path='/milkproduct' component={MilkPage} />
                    <Route exact path='/grocery' component={GroceryPage} />
+                   <Route exact path='/delivery' component={DeliveryPage} />
 
                    <Redirect to="/insert" />
                    </Switch>
