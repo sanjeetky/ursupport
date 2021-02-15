@@ -101,7 +101,8 @@ cancel(data){
     //  Alert(this.state.item)
       const items=this.state.item.map((data)=>{
            return(
-               <div style={{marginBottom:30}}>
+               <div style={{display:'flex',marginBottom:30}}>
+                 <div style={{flex:1}}>
                <p style={{margin:0,padding:0}}>{data.fullname}</p>
                <p style={{margin:0,padding:0}}>{data.telnum}</p>
                <p style={{margin:0,padding:0}}>{data.date}</p>
@@ -111,7 +112,13 @@ cancel(data){
                <p style={{margin:0,padding:0}}>{data.houseno}</p>
                <p style={{margin:0,padding:0,marginBottom:5}}>{data.area}</p>
                <p style={{margin:0,padding:0,marginBottom:5}}>{data.payment}</p>
-
+                    
+               <Button onClick={()=>this.delivered(data._id)} style={{marginRight:10}} >Delivered</Button>
+               
+               <Button onClick={()=>this.cancel(data._id)} >Cancel </Button>
+               </div>
+              
+               <div >
                <h4>orders</h4>
                {data.item.map((hello)=>{
                    return(
@@ -123,13 +130,9 @@ cancel(data){
                    </div>
                    )
                })}
-               
+             
                <p style={{margin:0,padding:0}}>Total Cost: {data.item.reduce((total,item)=>{return total+ (item.cost*item.quantity) },0)}</p>
-
-                   
-               <Button onClick={()=>this.delivered(data._id)} style={{margin:20}} >Delivered</Button>
-               
-               <Button onClick={()=>this.cancel(data._id)} >Cancel </Button>
+               </div>
                <hr/>
                </div>
            )
