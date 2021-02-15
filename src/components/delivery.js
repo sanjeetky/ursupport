@@ -110,6 +110,8 @@ cancel(data){
 
                <p style={{margin:0,padding:0}}>{data.houseno}</p>
                <p style={{margin:0,padding:0,marginBottom:5}}>{data.area}</p>
+               <p style={{margin:0,padding:0,marginBottom:5}}>{data.payment}</p>
+
                <h4>orders</h4>
                {data.item.map((hello)=>{
                    return(
