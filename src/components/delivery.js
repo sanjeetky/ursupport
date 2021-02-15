@@ -18,6 +18,7 @@ constructor(props){
         item:[]
     }
     this.delivered=this.delivered.bind(this);
+    this.cancel=this.cancel.bind(this);
 }
 componentDidMount()
 {
@@ -62,6 +63,40 @@ delivered(data){
 
 
 }
+
+cancel(data){
+  confirmAlert({
+      title: 'Confirm to cancel',
+      message: 'Are you sure to do this.',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => {
+              const obj={
+                  id:data,
+                  status:"Cancelled"
+              }
+             fetch( 'https://urbanreach.herokuapp.com/delivery',{
+              method:"PUT",
+              headers:{ "Content-Type":"application/json"},
+              body:JSON.stringify(obj)
+            
+          })
+          .then(data=>data.json())
+          .then(data=>alert("updated"))
+          .catch(err=>console.log(err))
+          }
+        },
+        {
+          label: 'No',
+          onClick: () => console.log("cancelled")
+        }
+      ]
+    });
+ 
+
+
+}
   render() {
     //  Alert(this.state.item)
       const items=this.state.item.map((data)=>{
@@ -90,8 +125,9 @@ delivered(data){
                <p style={{margin:0,padding:0}}>Total Cost: {data.item.reduce((total,item)=>{return total+ (item.cost*item.quantity) },0)}</p>
 
                    
-               <Button onClick={()=>this.delivered(data._id)} >Delivered</Button>
-
+               <Button onClick={()=>this.delivered(data._id)} style={{margin:20}} >Delivered</Button>
+               
+               <Button onClick={()=>this.cancel(data._id)} >Cancel </Button>
                <hr/>
                </div>
            )

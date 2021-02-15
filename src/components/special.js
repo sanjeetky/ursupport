@@ -9,98 +9,76 @@ const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
 
-class Insert extends Component {
-    constructor(props) {
-        super();
-
-        this.state = {
-            order:[]
-        };
-
-        this.handleSubmit = this.handleSubmit.bind(this);  
-        this.manage=this.manage.bind(this);
+class Special extends Component {
+constructor(props){
+    super()
+    this.state={
+        item:[]
     }
-    manage()
-    {
-        alert("hello")
-    }
+    this.delete=this.delete.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this); 
+}
+componentDidMount()
+{
+    fetch( 'https://urbanreach.herokuapp.com/items')
+    .then(res=>res.json())
+    .then(data=>{
+        this.setState({item:data})
+    })
+    .catch(err=>console.log(err))
+}
 
-    handleSubmit(values) {
+handleSubmit({values,item}) {
        
- 
-         
-          var obj={
-            name:values.name,
-            description: values.description,
-            itemid: values.name,
-            img: values.img,
-            brand:"Urban Reach",
-            cost:values.cost,
-            weight:values.weight,
-            quantity:"1",
-            category:values.category
-          }
+    
+    
 
-         fetch( 'https://urbanreach.herokuapp.com/items',{
-            method:"POST",
-            headers:{ "Content-Type":"application/json"},
-            body:JSON.stringify(obj)
-          
-        })
-        .then(data=>data.json())
-        .then(data=>alert(data.status))
-        .catch(err=>console.log(err))
-    };
+      
+    var obj={
+      description: values.description,
+      itemid:item.itemid,
+      img: values.img,
+      cost:values.cost,
+      weight:values.weight,
+    }
 
-    render() {
+   fetch( 'https://urbanreach.herokuapp.com/items',{
+      method:"PUT",
+      headers:{ "Content-Type":"application/json"},
+      body:JSON.stringify(obj)
+    
+  })
+  .then(data=>data.json())
+  .then(data=>alert("updated"))
+  .catch(err=>console.log(err))
+};
+
+delete(data)
+{
+    fetch('https://urbanreach.herokuapp.com/items',{
+        method:"DELETE",
+        headers:{ "Content-Type":"application/json"},
+        body:JSON.stringify({itemid:data})
+    })
+    .then(res=>res.json())
+    .then(data=>alert(data))
+    .catch(err=>console.log(err))
+}
+  render() {
+
+    const items=this.state.item.filter((item)=>item.category=="special").map((item)=>{
+
         return(
-            <div className="container">
-                <div className="row row-content">
-                   <div  style={{flexDirection:'row'}}>
-                      <h3>Insert Page</h3>
-                      <Link to={`/vegetable`} >
-                      <Button  style={{margin:20}}>Vegetable</Button>
-                      </Link>
-                      <Link to={`/fruit`} >
-                        <Button style={{margin:20}} >Fruit</Button>
-                      </Link>
-                      <Link to={`/dryfruit`} >
-                        <Button style={{margin:20}} >Dry Fruit</Button>
-                      </Link>
-                      <Link to={`/special`} >
-                        <Button style={{margin:20}} >Special</Button>
-                      </Link>
-                     <Link to={`/milkproduct`} >
-                        <Button style={{margin:20}} >Milk Product</Button>
-                    </Link>
-                    <Link to={`/delivery`} >
-                        <Button style={{margin:20}} >Delivery</Button>
-                    </Link>
-                      <hr/>
-                   </div>
-                    <div className="col-12 col-md-9">
-                    <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
-                            <Row className="form-group">
-                                <Label htmlFor="name"> Name</Label>
-                                
-                                    <Control.text model=".name" id="name" name="name"
-                                        placeholder="Name"
-                                        className="form-control"
-                                        validators={{
-                                            required, minLength: minLength(2), maxLength: maxLength(18)
-                                        }}
-                                        />
-                                        <Errors
-                                        className="text-danger"
-                                        model=".name"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required',
-                                            minLength: 'Must be greater than 1 characters',
-                                            maxLength: 'Must be 18 characters or less'
-                                        }}
-                                     />
-                               </Row>
+    
+          <div >
+         
+             <img src={item.img} alt=""/>
+    
+             
+             <h4 >{item.name}</h4>
+             <div className="col-12 col-md-9">
+                    <LocalForm onSubmit={(values) => this.handleSubmit({values,item})}>
+
                             
                             <Row className="form-group">
                             <Label htmlFor="description" >description</Label>
@@ -111,6 +89,7 @@ class Insert extends Component {
                                         validators={{
                                             required, minLength: minLength(10)
                                         }}
+                                        defaultValue={item.description}
                                         />
                                   <Errors
                                         className="text-danger"
@@ -131,6 +110,7 @@ class Insert extends Component {
                                         validators={{
                                             required, minLength: minLength(1)
                                         }}
+                                        defaultValue={item.img}
                                         />
                                             <Errors
                                         className="text-danger"
@@ -151,6 +131,7 @@ class Insert extends Component {
                                          validators={{
                                             required, minLength: minLength(1)
                                         }}
+                                        defaultValue={item.cost}
                                         />
                                          <Errors
                                         className="text-danger"
@@ -172,6 +153,7 @@ class Insert extends Component {
               validators={{
                  required, minLength: minLength(1)
              }}
+             defaultValue={item.weight}
              />
               <Errors
              className="text-danger"
@@ -187,38 +169,41 @@ class Insert extends Component {
 
 
 
-                               <Row className="form-group" >
-                                <Label htmlFor="category" >Category </Label>
-                                    <Control.select model=".category" id="category" name="category"
-                                        placeholder="category"
-                                        className="form-control"  
-                                        defaultValue="vegetable"
-                                        > 
-                                         <option value="vegetable">vegetable</option>
-                                         <option value="milkproduct">milkproduct</option>
-                                         <option value="fruit">fruit</option>
-                                         <option value="dryfruit">dryfruit</option>
-                                         <option value="specail">special</option>
-                                        </Control.select>
-                           </Row>
+                              
                          
                             
                             <Row className="form-group">
                                
                                     <Button type="submit" color="primary">
-                                        Add
+                                        Submit
                                     </Button>
                              
                                     </Row>
                         </LocalForm>
-                    </div>
-               </div>
+                        </div>
+           
+            
 
-               </div>
-        );
-    }
+
+           <Button onClick={()=>this.delete(item.itemid)} >Delete</Button>
+           <hr/>
+          </div>
+    
+    
+        )
+      })
+
+      
+    return (
+      <div>
+          <h1>Manage</h1>
+
+          <Link to={`/insert`} >
+               <Button  >Insert Page</Button>
+         </Link>          
+          {items}
+      </div>
+    );
+  }
 }
-   
-
-
-export default Insert;
+export default Special;
