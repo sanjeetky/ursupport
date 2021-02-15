@@ -113,9 +113,10 @@ cancel(data){
                <p style={{margin:0,padding:0,marginBottom:5}}>{data.area}</p>
                <p style={{margin:0,padding:0,marginBottom:5}}>{data.payment}</p>
                     
-               <Button onClick={()=>this.delivered(data._id)} style={{marginRight:10}} >Delivered</Button>
+               <Button onClick={()=>this.delivered(data._id)} style={{marginBottom:10,marginRight:10}} >Delivered</Button>
                
                <Button onClick={()=>this.cancel(data._id)} >Cancel </Button>
+               <hr/>
                </div>
               
                <div >
@@ -132,9 +133,11 @@ cancel(data){
                })}
              
                <p style={{margin:0,padding:0}}>Total Cost: {data.item.reduce((total,item)=>{return total+ (item.cost*item.quantity) },0)}</p>
+               <hr/>
                </div>
                <hr/>
                </div>
+               
            )
       });
        
