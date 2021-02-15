@@ -124,9 +124,11 @@ cancel(data){
                {data.item.map((hello)=>{
                    return(
                        <div style={{marginBottom:10}}>
-                   <p style={{margin:0,padding:0}}>{hello.name} {hello.brand}</p>
-                   <p style={{margin:0,padding:0}}>{hello.weight} X {hello.quantity}</p>
+                   <p style={{margin:0,padding:0}}>{hello.name}</p>
+                   <p style={{margin:0,padding:0}}>{hello.brand}</p>
                    <p style={{margin:0,padding:0}}>Cost:{hello.cost}</p>
+
+                   <p style={{margin:0,padding:0}}>{hello.weight} X {hello.quantity}</p>
                 
                    </div>
                    )
