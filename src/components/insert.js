@@ -198,7 +198,8 @@ class Insert extends Component {
                                          <option value="milkproduct">milkproduct</option>
                                          <option value="fruit">fruit</option>
                                          <option value="dryfruit">dryfruit</option>
-                                         <option value="specail">special</option>
+                                         <option value="special">special</option>
+                                         <option value="festival">festival</option>
                                         </Control.select>
                            </Row>
                          
