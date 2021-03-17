@@ -27,21 +27,22 @@ class Insert extends Component {
 
     handleSubmit(values) {
        
- 
+       if(values.zone=="evening")
+       {
          
           var obj={
             name:values.name,
             description: values.description,
-            itemid: values.name,
+            itemid:"evening"+ values.name,
             img: values.img,
-            brand:"Urban Reach",
+            brand:values.character,
             cost:values.cost,
             weight:values.weight,
             quantity:"1",
             category:values.category
           }
 
-         fetch( 'https://urbanreach.herokuapp.com/items',{
+         fetch( 'https://urbanreach.herokuapp.com/eveningitems',{
             method:"POST",
             headers:{ "Content-Type":"application/json"},
             body:JSON.stringify(obj)
@@ -50,6 +51,31 @@ class Insert extends Component {
         .then(data=>data.json())
         .then(data=>alert(data.status))
         .catch(err=>console.log(err))
+    }
+    else
+    {
+        var obj={
+            name:values.name,
+            description: values.description,
+            itemid:"morning"+ values.name,
+            img: values.img,
+            brand:values.character,
+            cost:values.cost,
+            weight:values.weight,
+            quantity:"1",
+            category:values.category
+          }
+
+         fetch( 'https://urbanreach.herokuapp.com/morningitems',{
+            method:"POST",
+            headers:{ "Content-Type":"application/json"},
+            body:JSON.stringify(obj)
+          
+        })
+        .then(data=>data.json())
+        .then(data=>alert(data.status))
+        .catch(err=>console.log(err))
+    }
     };
 
     render() {
@@ -58,24 +84,42 @@ class Insert extends Component {
                 <div className="row row-content">
                    <div  style={{flexDirection:'row'}}>
                       <h3>Insert Page</h3>
-                      <Link to={`/vegetable`} >
-                      <Button  style={{margin:20}}>Vegetable</Button>
+                      <h4>Morning</h4>
+                      <Link to={`/morningvegetable`} >
+                      <Button  style={{margin:20}}> Vegetable</Button>
                       </Link>
-                      <Link to={`/fruit`} >
+                      <Link to={`/morningfruit`} >
                         <Button style={{margin:20}} >Fruit</Button>
                       </Link>
-                      <Link to={`/dryfruit`} >
-                        <Button style={{margin:20}} >Dry Fruit</Button>
+                     
+                      <Link to={`/morningmandi`} >
+                        <Button style={{margin:20}} >Mandi</Button>
                       </Link>
-                      <Link to={`/special`} >
-                        <Button style={{margin:20}} >Special</Button>
-                      </Link>
-                     <Link to={`/milkproduct`} >
+                     <Link to={`/morningmilkproduct`} >
                         <Button style={{margin:20}} >Milk Product</Button>
                     </Link>
+                    <hr/>
+                    <h4>Evening</h4>
+                      <Link to={`/eveningvegetable`} >
+                      <Button  style={{margin:20}}> Vegetable</Button>
+                      </Link>
+                      <Link to={`/eveningfruit`} >
+                        <Button style={{margin:20}} >Fruit</Button>
+                      </Link>
+                     
+                      <Link to={`/eveningmandi`} >
+                        <Button style={{margin:20}} >Mandi</Button>
+                      </Link>
+                     <Link to={`/eveningmilkproduct`} >
+                        <Button style={{margin:20}} >Milk Product</Button>
+                    </Link>
+
+                    <hr/>
                     <Link to={`/delivery`} >
                         <Button style={{margin:20}} >Delivery</Button>
                     </Link>
+                   
+                   
                       <hr/>
                    </div>
                     <div className="col-12 col-md-9">
@@ -119,6 +163,28 @@ class Insert extends Component {
                                         messages={{
                                             required: 'Required',
                                             minLength: 'Must be equal to 10 numbers'
+                                        }}
+                                     />
+                               </Row>
+
+                                 
+                            <Row className="form-group">
+                            <Label htmlFor="character" >Items character</Label>
+                                
+                                    <Control.text model=".character" id="character" name="character"
+                                        placeholder="size:small"
+                                        className="form-control"
+                                        validators={{
+                                            required, minLength: minLength(5)
+                                        }}
+                                        />
+                                  <Errors
+                                        className="text-danger"
+                                        model=".character"
+                                        show="touched"
+                                        messages={{
+                                            required: 'Required',
+                                            minLength: 'Must be equal to 5 numbers'
                                         }}
                                      />
                                </Row>
@@ -197,9 +263,21 @@ class Insert extends Component {
                                          <option value="vegetable">vegetable</option>
                                          <option value="milkproduct">milkproduct</option>
                                          <option value="fruit">fruit</option>
-                                         <option value="dryfruit">dryfruit</option>
-                                         <option value="special">special</option>
+                                         <option value="special">mandi</option>
                                          <option value="festival">festival</option>
+                                        </Control.select>
+                           </Row>
+                         
+                           <Row className="form-group" >
+                                <Label htmlFor="zone" >zone </Label>
+                                    <Control.select model=".zone" id="zone" name="zone"
+                                        placeholder="zone"
+                                        className="form-control"  
+                                        defaultValue="morning"
+                                        > 
+                                         <option value="morning">morning</option>
+                                         <option value="evening">evening</option>
+                                        
                                         </Control.select>
                            </Row>
                          

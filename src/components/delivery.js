@@ -101,42 +101,43 @@ cancel(data){
     //  Alert(this.state.item)
       const items=this.state.item.map((data)=>{
            return(
-               <div style={{display:'flex',marginBottom:30}}>
-                 <div style={{flex:1}}>
-               <p style={{margin:0,padding:0}}>{data.fullname}</p>
-               <p style={{margin:0,padding:0}}>{data.telnum}</p>
+               <div style={{marginBottom:30}}>
+               <div style={{display:'flex'}}>
+          
+               <p style={{margin:0,padding:0 ,marginRight:5,color:'red'}}>{data.fullname} </p>
+               <p style={{margin:0,padding:0 ,marginRight:5}}> {data.telnum} </p>
+               <p style={{margin:0,padding:0 ,color:'red'}}>  {data.time}</p>
+
+               </div>
+
                <p style={{margin:0,padding:0}}>{data.date}</p>
-
-               <p style={{margin:0,padding:0}}>{data.time}</p>
-
-               <p style={{margin:0,padding:0}}>{data.houseno}</p>
-               <p style={{margin:0,padding:0,marginBottom:5}}>{data.area}</p>
+               <p style={{margin:0,padding:0,color:'blue'}}>{data.houseno} {data.area}</p>
                <p style={{margin:0,padding:0,marginBottom:5}}>{data.payment}</p>
                     
-               <Button onClick={()=>this.delivered(data._id)} style={{marginBottom:10,marginRight:10}} >Delivered</Button>
-               
-               <Button onClick={()=>this.cancel(data._id)} >Cancel </Button>
-               <hr/>
-               </div>
-              
-               <div >
                <h4>orders</h4>
                {data.item.map((hello)=>{
                    return(
-                       <div style={{marginBottom:10}}>
-                   <p style={{margin:0,padding:0}}>{hello.name}</p>
-                   <p style={{margin:0,padding:0}}>{hello.brand}</p>
-                   <p style={{margin:0,padding:0}}>Cost:{hello.cost}</p>
+                       <div style={{marginBottom:5}}>
+                         <div style={{display:'flex'}}>
+                   <p style={{margin:0,padding:0,color:'blue',marginRight:5}}>{hello.name} </p>
+                   <p style={{margin:0,padding:0,marginRight:5}}> {hello.brand} </p>
+                   <p style={{margin:0,padding:0}}> Cost:{hello.cost}</p>
+                  </div>
 
-                   <p style={{margin:0,padding:0}}>{hello.weight} X {hello.quantity}</p>
-                
+                  <div style={{display:'flex'}}>
+                   <p style={{margin:0,padding:0,marginRight:3,color:'red'}}>{hello.weight} </p>
+                   <p>X</p>
+                   <p style={{margin:0,padding:0,color:'red',marginLeft:2}}> {hello.quantity}</p>
+                </div>
                    </div>
                    )
                })}
              
                <p style={{margin:0,padding:0}}>Total Cost: {data.item.reduce((total,item)=>{return total+ (item.cost*item.quantity) },0)}</p>
-               <hr/>
-               </div>
+               <Button onClick={()=>this.delivered(data._id)} style={{marginRight:10}} >Delivered</Button>
+               
+               <Button onClick={()=>this.cancel(data._id)} >Cancel </Button>
+             
                <hr/>
                </div>
                

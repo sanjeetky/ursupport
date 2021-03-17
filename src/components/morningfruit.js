@@ -9,7 +9,7 @@ const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
 
-class Manage extends Component {
+class MorningFruit extends Component {
 constructor(props){
     super()
     this.state={
@@ -20,7 +20,7 @@ constructor(props){
 }
 componentDidMount()
 {
-    fetch( 'https://urbanreach.herokuapp.com/items')
+    fetch( 'https://urbanreach.herokuapp.com/morningitems')
     .then(res=>res.json())
     .then(data=>{
         this.setState({item:data})
@@ -40,9 +40,12 @@ handleSubmit({values,item}) {
       img: values.img,
       cost:values.cost,
       weight:values.weight,
+      status:values.status,
+      state:values.state,
+      brand:values.brand
     }
 
-   fetch( 'https://urbanreach.herokuapp.com/items',{
+   fetch( 'https://urbanreach.herokuapp.com/morningitems',{
       method:"PUT",
       headers:{ "Content-Type":"application/json"},
       body:JSON.stringify(obj)
@@ -55,7 +58,7 @@ handleSubmit({values,item}) {
 
 delete(data)
 {
-    fetch('https://urbanreach.herokuapp.com/items',{
+    fetch('https://urbanreach.herokuapp.com/morningitems',{
         method:"DELETE",
         headers:{ "Content-Type":"application/json"},
         body:JSON.stringify({itemid:data})
@@ -66,9 +69,8 @@ delete(data)
 }
   render() {
 
-    const items=this.state
-    .item.map((item)=>{
-  
+    const items=this.state.item.filter((item)=>item.category=="fruit").map((item)=>{
+
         return(
     
           <div >
@@ -102,6 +104,28 @@ delete(data)
                                         }}
                                      />
                                </Row>
+                               <Row className="form-group">
+                            <Label htmlFor="brand" >character</Label>
+                                
+                                    <Control.text model=".brand" id="brand" name="brand"
+                                        placeholder="brand"
+                                        className="form-control"
+                                        validators={{
+                                            required, minLength: minLength(5)
+                                        }}
+                                        defaultValue={item.brand }
+                                        />
+                                  <Errors
+                                        className="text-danger"
+                                        model=".brand"
+                                        show="touched"
+                                        messages={{
+                                            required: 'Required',
+                                            minLength: 'Must be equal to 5 letters'
+                                        }}
+                                     />
+                               </Row>
+
 
                                <Row className="form-group">
                                 <Label htmlFor="img" >Image</Label>
@@ -170,6 +194,33 @@ delete(data)
 
 
 
+<Row className="form-group" >
+                                <Label htmlFor="state" >State </Label>
+                                    <Control.select model=".state" id="state" name="state"
+                                        placeholder="state"
+                                        className="form-control"  
+                                        defaultValue={item.state}
+                                        > 
+                                         <option value="on">on</option>
+                                         <option value="off">off</option>
+                                        
+                                        </Control.select>
+                           </Row>
+                              
+                           <Row className="form-group" >
+                                <Label htmlFor="status" >Status </Label>
+                                    <Control.select model=".status" id="status" name="status"
+                                        placeholder="status"
+                                        className="form-control"  
+                                        defaultValue={item.status}
+                                        > 
+                                         <option value="Trending">Trending</option>
+                                         <option value="Offers">Offers</option>
+                                         <option value="Normal">Normal</option>
+                                        </Control.select>
+                           </Row>
+                         
+              
                               
                          
                             
@@ -207,4 +258,4 @@ delete(data)
     );
   }
 }
-export default Manage;
+export default MorningFruit;

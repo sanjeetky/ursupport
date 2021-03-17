@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import Insert from './insert.js';
-import Vegetable from './vegetable.js';
-import Milk from './milk.js';
-import Fruit from './fruit.js';
-import Dryfruit from './dryfruit.js';
-import Special from './special.js';
+import MorningVegetable from './morningvegetable.js';
+import MorningFruit from './morningfruit.js';
+import MorningMilk from './morningmilk.js';
+import MorningMandi from './morningmandi.js';
+
+
+import EveningVegetable from './eveningvegetable.js';
+import EveningFruit from './eveningfruit.js';
+import EveningMilk from './eveningmilk.js';
+import EveningMandi from './eveningmandi.js';
+
+
+
+
 import Delivery from './delivery.js';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
@@ -22,31 +31,54 @@ class Main extends Component {
             );
           };
         
-          const VegPage = () => {
+          const eveningVegPage = () => {
             return(
-                <Vegetable  />
+                <EveningVegetable  />
             );
           };
-          const MilkPage = () => {
+          const morningVegPage = () => {
             return(
-                <Milk  />
+                <MorningVegetable  />
             );
           };
-          const FruitPage = () => {
+
+
+          const morningMilkPage = () => {
             return(
-                <Fruit />
+                <MorningMilk  />
             );
           };
-          const DryfruitPage = () => {
+          const  eveningMilkPage = () => {
             return(
-                <Dryfruit />
+                <EveningMilk  />
             );
           };
-          const SpecialPage = () => {
+
+
+          const morningFruitPage = () => {
             return(
-                <Special />
+                <MorningFruit />
             );
           };
+          const eveningFruitPage = () => {
+            return(
+                <EveningFruit />
+            );
+          };
+
+
+         
+          const morningMandiPage = () => {
+            return(
+                <MorningMandi />
+            );
+          };
+          const eveningMandiPage = () => {
+            return(
+                <EveningMandi />
+            );
+          };
+
           const DeliveryPage = () => {
             return(
                 <Delivery  />
@@ -59,11 +91,21 @@ class Main extends Component {
             <div>
                  <Switch>
                    <Route exact path='/insert' component={InsertPage} />
-                   <Route exact path='/vegetable' component={VegPage} />
-                   <Route exact path='/milkproduct' component={MilkPage} />
-                   <Route exact path='/special' component={SpecialPage} />
-                   <Route exact path='/fruit' component={FruitPage} />
-                   <Route exact path='/dryfruit' component={DryfruitPage} />
+
+                   <Route exact path='/morningvegetable' component={morningVegPage} />
+                   <Route exact path='/eveningvegetable' component={eveningVegPage} />
+
+                   <Route exact path='/morningmilkproduct' component={morningMilkPage} />
+                   <Route exact path='/eveningmilkproduct' component={eveningMilkPage} />
+
+
+                   <Route exact path='/morningmandi' component={morningMandiPage} />
+                   <Route exact path='/eveningmandi' component={eveningMandiPage} />
+
+                   <Route exact path='/morningfruit' component={morningFruitPage} />
+                   <Route exact path='/eveningfruit' component={eveningFruitPage} />
+
+                 
                    <Route exact path='/delivery' component={DeliveryPage} />
 
                    <Redirect to="/insert" />
