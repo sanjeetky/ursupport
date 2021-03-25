@@ -27,13 +27,12 @@ class Insert extends Component {
 
     handleSubmit(values) {
        
-       if(values.zone=="evening")
-       {
+      
          
           var obj={
             name:values.name,
             description: values.description,
-            itemid:"evening"+ values.name,
+            itemid: values.category+values.name,
             img: values.img,
             brand:values.character,
             cost:values.cost,
@@ -42,7 +41,7 @@ class Insert extends Component {
             category:values.category
           }
 
-         fetch( 'https://urbanreach.herokuapp.com/eveningitems',{
+         fetch( 'https://urbanreach.herokuapp.com/items',{
             method:"POST",
             headers:{ "Content-Type":"application/json"},
             body:JSON.stringify(obj)
@@ -51,31 +50,7 @@ class Insert extends Component {
         .then(data=>data.json())
         .then(data=>alert(data.status))
         .catch(err=>console.log(err))
-    }
-    else
-    {
-        var obj={
-            name:values.name,
-            description: values.description,
-            itemid:"morning"+ values.name,
-            img: values.img,
-            brand:values.character,
-            cost:values.cost,
-            weight:values.weight,
-            quantity:"1",
-            category:values.category
-          }
-
-         fetch( 'https://urbanreach.herokuapp.com/morningitems',{
-            method:"POST",
-            headers:{ "Content-Type":"application/json"},
-            body:JSON.stringify(obj)
-          
-        })
-        .then(data=>data.json())
-        .then(data=>alert(data.status))
-        .catch(err=>console.log(err))
-    }
+   
     };
 
     render() {
@@ -84,33 +59,19 @@ class Insert extends Component {
                 <div className="row row-content">
                    <div  style={{flexDirection:'row'}}>
                       <h3>Insert Page</h3>
-                      <h4>Morning</h4>
-                      <Link to={`/morningvegetable`} >
+                     
+                   
+                      <Link to={`/vegetable`} >
                       <Button  style={{margin:20}}> Vegetable</Button>
                       </Link>
-                      <Link to={`/morningfruit`} >
+                      <Link to={`/fruit`} >
                         <Button style={{margin:20}} >Fruit</Button>
                       </Link>
                      
-                      <Link to={`/morningmandi`} >
+                      <Link to={`/mandi`} >
                         <Button style={{margin:20}} >Mandi</Button>
                       </Link>
-                     <Link to={`/morningmilkproduct`} >
-                        <Button style={{margin:20}} >Milk Product</Button>
-                    </Link>
-                    <hr/>
-                    <h4>Evening</h4>
-                      <Link to={`/eveningvegetable`} >
-                      <Button  style={{margin:20}}> Vegetable</Button>
-                      </Link>
-                      <Link to={`/eveningfruit`} >
-                        <Button style={{margin:20}} >Fruit</Button>
-                      </Link>
-                     
-                      <Link to={`/eveningmandi`} >
-                        <Button style={{margin:20}} >Mandi</Button>
-                      </Link>
-                     <Link to={`/eveningmilkproduct`} >
+                     <Link to={`/milkproduct`} >
                         <Button style={{margin:20}} >Milk Product</Button>
                     </Link>
 
@@ -268,18 +229,7 @@ class Insert extends Component {
                                         </Control.select>
                            </Row>
                          
-                           <Row className="form-group" >
-                                <Label htmlFor="zone" >zone </Label>
-                                    <Control.select model=".zone" id="zone" name="zone"
-                                        placeholder="zone"
-                                        className="form-control"  
-                                        defaultValue="morning"
-                                        > 
-                                         <option value="morning">morning</option>
-                                         <option value="evening">evening</option>
-                                        
-                                        </Control.select>
-                           </Row>
+                          
                          
                             
                             <Row className="form-group">

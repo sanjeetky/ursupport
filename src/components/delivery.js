@@ -4,7 +4,7 @@ import { Breadcrumb, BreadcrumbItem,
     import { Link } from 'react-router-dom';
     import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css'; 
-
+import {baseUrl} from '../baseUrl';
 
 import { Control, LocalForm, Errors } from 'react-redux-form';
 const required = (val) => val && val.length;
@@ -22,7 +22,7 @@ constructor(props){
 }
 componentDidMount()
 {
-    fetch( 'https://urbanreach.herokuapp.com/delivery')
+    fetch( baseUrl+'/delivery')
     .then(res=>res.json())
     .then(data=>{
         this.setState({item:data})
@@ -42,7 +42,7 @@ delivered(data){
                     id:data,
                     status:"Delivered"
                 }
-               fetch( 'https://urbanreach.herokuapp.com/delivery',{
+               fetch( baseUrl+'/delivery',{
                 method:"PUT",
                 headers:{ "Content-Type":"application/json"},
                 body:JSON.stringify(obj)
@@ -76,7 +76,7 @@ cancel(data){
                   id:data,
                   status:"Cancelled"
               }
-             fetch( 'https://urbanreach.herokuapp.com/delivery',{
+             fetch(baseUrl+ '/delivery',{
               method:"PUT",
               headers:{ "Content-Type":"application/json"},
               body:JSON.stringify(obj)
@@ -109,6 +109,7 @@ cancel(data){
                <p style={{margin:0,padding:0 ,color:'red'}}>  {data.time}</p>
 
                </div>
+               <p style={{margin:0,padding:0}}>{data.remark}</p>
 
                <p style={{margin:0,padding:0}}>{data.date}</p>
                <p style={{margin:0,padding:0,color:'blue'}}>{data.houseno} {data.area}</p>

@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import Insert from './insert.js';
-import MorningVegetable from './morningvegetable.js';
-import MorningFruit from './morningfruit.js';
-import MorningMilk from './morningmilk.js';
-import MorningMandi from './morningmandi.js';
+import Vegetable from './vegetable.js';
+import Fruit from './fruit.js';
+import Milk from './milk.js';
+import Mandi from './mandi.js';
 
 
-import EveningVegetable from './eveningvegetable.js';
-import EveningFruit from './eveningfruit.js';
-import EveningMilk from './eveningmilk.js';
-import EveningMandi from './eveningmandi.js';
 
 
 
@@ -31,53 +27,37 @@ class Main extends Component {
             );
           };
         
-          const eveningVegPage = () => {
+         
+          const VegPage = () => {
             return(
-                <EveningVegetable  />
-            );
-          };
-          const morningVegPage = () => {
-            return(
-                <MorningVegetable  />
-            );
-          };
-
-
-          const morningMilkPage = () => {
-            return(
-                <MorningMilk  />
-            );
-          };
-          const  eveningMilkPage = () => {
-            return(
-                <EveningMilk  />
-            );
-          };
-
-
-          const morningFruitPage = () => {
-            return(
-                <MorningFruit />
-            );
-          };
-          const eveningFruitPage = () => {
-            return(
-                <EveningFruit />
+                <Vegetable  />
             );
           };
 
 
          
-          const morningMandiPage = () => {
+          const  MilkPage = () => {
             return(
-                <MorningMandi />
+                <Milk  />
             );
           };
-          const eveningMandiPage = () => {
+
+
+          const FruitPage = () => {
             return(
-                <EveningMandi />
+                <Fruit />
             );
           };
+         
+
+
+         
+          const MandiPage = () => {
+            return(
+                <Mandi />
+            );
+          };
+        
 
           const DeliveryPage = () => {
             return(
@@ -91,19 +71,10 @@ class Main extends Component {
             <div>
                  <Switch>
                    <Route exact path='/insert' component={InsertPage} />
-
-                   <Route exact path='/morningvegetable' component={morningVegPage} />
-                   <Route exact path='/eveningvegetable' component={eveningVegPage} />
-
-                   <Route exact path='/morningmilkproduct' component={morningMilkPage} />
-                   <Route exact path='/eveningmilkproduct' component={eveningMilkPage} />
-
-
-                   <Route exact path='/morningmandi' component={morningMandiPage} />
-                   <Route exact path='/eveningmandi' component={eveningMandiPage} />
-
-                   <Route exact path='/morningfruit' component={morningFruitPage} />
-                   <Route exact path='/eveningfruit' component={eveningFruitPage} />
+                   <Route exact path='/vegetable' component={VegPage} />
+                   <Route exact path='/milkproduct' component={MilkPage} />
+                   <Route exact path='/mandi' component={MandiPage} />
+                   <Route exact path='/fruit' component={FruitPage} />
 
                  
                    <Route exact path='/delivery' component={DeliveryPage} />

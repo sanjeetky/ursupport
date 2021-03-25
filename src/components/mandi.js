@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import { Breadcrumb, BreadcrumbItem,
     Button, Row, Col, Label } from 'reactstrap';
     import { Link } from 'react-router-dom';
+    import {baseUrl} from '../baseUrl';
 
 
 import { Control, LocalForm, Errors } from 'react-redux-form';
@@ -9,7 +10,7 @@ const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
 
-class EveningMandi extends Component {
+class Mandi extends Component {
 constructor(props){
     super()
     this.state={
@@ -20,7 +21,7 @@ constructor(props){
 }
 componentDidMount()
 {
-    fetch( 'https://urbanreach.herokuapp.com/eveningitems')
+    fetch( baseUrl+'/items')
     .then(res=>res.json())
     .then(data=>{
         this.setState({item:data})
@@ -45,7 +46,7 @@ handleSubmit({values,item}) {
       brand:values.brand
     }
 
-   fetch( 'https://urbanreach.herokuapp.com/eveningitems',{
+   fetch( baseUrl+'/items',{
       method:"PUT",
       headers:{ "Content-Type":"application/json"},
       body:JSON.stringify(obj)
@@ -58,7 +59,7 @@ handleSubmit({values,item}) {
 
 delete(data)
 {
-    fetch('https://urbanreach.herokuapp.com/eveningitems',{
+    fetch(baseUrl+'/items',{
         method:"DELETE",
         headers:{ "Content-Type":"application/json"},
         body:JSON.stringify({itemid:data})
@@ -258,4 +259,4 @@ delete(data)
     );
   }
 }
-export default EveningMandi;
+export default Mandi;
