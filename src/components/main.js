@@ -4,7 +4,7 @@ import Vegetable from './vegetable.js';
 import Fruit from './fruit.js';
 import Milk from './milk.js';
 import Mandi from './mandi.js';
-
+import Orders from './orders.js';
 
 
 
@@ -64,6 +64,12 @@ class Main extends Component {
                 <Delivery  />
             );
           };
+
+          const OrdersPage = () => {
+            return(
+                <Orders />
+            );
+          };
           
         return (
          
@@ -75,7 +81,7 @@ class Main extends Component {
                    <Route exact path='/milkproduct' component={MilkPage} />
                    <Route exact path='/mandi' component={MandiPage} />
                    <Route exact path='/fruit' component={FruitPage} />
-
+                   <Route exact path='/orders' component={OrdersPage} />
                  
                    <Route exact path='/delivery' component={DeliveryPage} />
 
