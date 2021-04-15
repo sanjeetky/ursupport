@@ -33,51 +33,7 @@ componentDidMount()
 
   render() {
       const items=this.state.item.map((data)=>{
-        if(data.item.reduce((total,item)=>{return total+ (item.cost*item.quantity) },0)<50)
-        {
-           return(
-               <div style={{marginBottom:30}}>
-               <div style={{display:'flex'}}>
-          
-               <p style={{margin:0,padding:0 ,marginRight:5,color:'red'}}>{data.fullname} </p>
-               <p style={{margin:0,padding:0 ,marginRight:5}}> {data.telnum} </p>
-               <p style={{margin:0,padding:0 ,color:'red'}}>  {data.time}</p>
-
-               </div>
-               <p style={{margin:0,padding:0}}>{data.remark}</p>
-
-               <p style={{margin:0,padding:0}}>{data.date}</p>
-               <p style={{margin:0,padding:0,color:'blue'}}>{data.houseno} {data.area}</p>
-               <p style={{margin:0,padding:0,marginBottom:5}}>{data.payment}</p>
-               <p style={{margin:0,padding:0,marginBottom:5,color:'red'}}>{data.status}</p>
-               <h4>orders</h4>
-               {data.item.map((hello)=>{
-                   return(
-                       <div style={{marginBottom:5}}>
-                         <div style={{display:'flex'}}>
-                   <p style={{margin:0,padding:0,color:'blue',marginRight:5}}>{hello.name} </p>
-                   <p style={{margin:0,padding:0,marginRight:5}}> {hello.brand} </p>
-                   <p style={{margin:0,padding:0}}> Cost:{hello.cost}</p>
-                  </div>
-
-                  <div style={{display:'flex'}}>
-                   <p style={{margin:0,padding:0,marginRight:3,color:'red'}}>{hello.weight} </p>
-                   <p>X</p>
-                   <p style={{margin:0,padding:0,color:'red',marginLeft:2}}> {hello.quantity}</p>
-                </div>
-                   </div>
-                   )
-               })}
-             
-               <p style={{margin:0,padding:0}}>Total Cost: {10+data.item.reduce((total,item)=>{return total+ (item.cost*item.quantity) },0)}</p>
-               
-             
-               <hr/>
-               </div>
-               
-           )
-              }
-              else{
+       
                 return(
                   <div style={{marginBottom:30}}>
                <div style={{display:'flex'}}>
@@ -112,14 +68,14 @@ componentDidMount()
                    )
                })}
              
-               <p style={{margin:0,padding:0}}>Total Cost: {data.item.reduce((total,item)=>{return total+ (item.cost*item.quantity) },0)}</p>
+               <p style={{margin:0,padding:0}}>Total Cost: {data.price}</p>
               
              
                <hr/>
                </div>
                
                 )
-              }
+              
       });
        
       
