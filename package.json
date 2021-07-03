@@ -8,6 +8,7 @@
     "react-confirm-alert": "^2.7.0",
     "react-data-grid": "^7.0.0-canary.49",
     "react-dom": "^16.14.0",
+    "react-redux": "^7.2.4",
     "react-redux-form": "^1.16.14",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
