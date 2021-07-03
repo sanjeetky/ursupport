@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import { Breadcrumb, BreadcrumbItem,
     Button, Row, Col, Label,Alert } from 'reactstrap';
     import { Link } from 'react-router-dom';
-    import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css'; 
 import {baseUrl} from '../baseUrl';
 
