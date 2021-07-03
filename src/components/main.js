@@ -5,7 +5,8 @@ import Fruit from './fruit.js';
 import Milk from './milk.js';
 import Mandi from './mandi.js';
 import Orders from './orders.js';
-
+import Manage from './manage.js';
+import {baseUrl} from '../baseUrl';
 
 
 
@@ -17,8 +18,19 @@ class Main extends Component {
 
     constructor(props){
         super();
+        this.state={
+          delivery:[]
+        }
     }
-
+componentDidMount()
+{
+  fetch( baseUrl+'/delivery/display')
+  .then(res=>res.json())
+  .then(data=>{
+      this.setState({delivery:data})
+  })
+  .catch(err=>console.log(err))
+}
       
     render() {
         const InsertPage = () => {
@@ -65,6 +77,19 @@ class Main extends Component {
             );
           };
 
+          const ManagementPage = () => {
+            return(
+                <Manage  />
+            );
+          };
+        
+
+        
+
+        
+         
+
+
           const OrdersPage = () => {
             return(
                 <Orders />
@@ -72,8 +97,6 @@ class Main extends Component {
           };
           
         return (
-         
-       
             <div>
                  <Switch>
                    <Route exact path='/insert' component={InsertPage} />
@@ -84,6 +107,8 @@ class Main extends Component {
                    <Route exact path='/orders' component={OrdersPage} />
                  
                    <Route exact path='/delivery' component={DeliveryPage} />
+                   <Route exact path='/management' component={ManagementPage} />
+                   
 
                    <Redirect to="/insert" />
                    </Switch>
