@@ -81,7 +81,7 @@ delete(data)
     
              
              <h4 >{item.name}</h4>
-             <div className="col-12 col-md-9">
+             <div >
                     <LocalForm onSubmit={(values) => this.handleSubmit({values,item})}>
 
                             
