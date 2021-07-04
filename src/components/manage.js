@@ -7,8 +7,7 @@ import DataGrid from 'react-data-grid';
 import {baseUrl} from '../baseUrl';
 
 
-const  array = [];
-const brray=[];
+
 let Total=0;
 let frequency=0;
 
@@ -71,19 +70,11 @@ componentDidMount()
              }
          })
 
-         Total=Total+totalvalue;
-         frequency=frequency+freq;
+        
         if(freq!=0)
         {
-          let ob={}
-          ob.username=item.username;
-          ob.total=totalvalue;
-          ob.freq=freq;
-          ob.mobilenum=item.mobilenum;
-          ob.area=item.area;
-          ob.houseno=item.houseno;
-         array.push(ob)
-
+          Total=Total+totalvalue;
+         frequency=frequency+freq;
          return(
            <div class='row'>
              <div class="col-md-2">{item.username}</div>
@@ -113,12 +104,7 @@ const itemmanage=this.state.item.map((item)=>{
 })
 if(quantity!=0)
  {
-   let obb={}
-   obb.name=item.name;
-   obb.quantity=quantity;
-   obb.cost=cost;
-   obb.weight=item.weight;
-  brray.push(obb)
+ 
   return(
     <div class='row'>
       <div class="col-md-2">{item.name}</div>

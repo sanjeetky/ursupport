@@ -43,7 +43,8 @@ handleSubmit({values,item}) {
       weight:values.weight,
       status:values.status,
       state:values.state,
-      brand:values.brand
+      brand:values.brand,
+      cp:values.cp
     }
 
    fetch(  baseUrl+'/items',{
@@ -161,6 +162,29 @@ delete(data)
                                          <Errors
                                         className="text-danger"
                                         model=".cost"
+                                        show="touched"
+                                        messages={{
+                                            required: 'Required',
+                                            minLength: 'Must be greater than 1 characters'                        
+                                        }}
+                                     />
+
+                          </Row>
+
+
+                          <Row className="form-group">
+
+                           <Label htmlFor="cp">Costing price</Label>
+                                    <Control.text model=".cp" id="cp" name="cp"
+                                         className="form-control"
+                                         validators={{
+                                            required, minLength: minLength(1)
+                                        }}
+                                        defaultValue={item.cp}
+                                        />
+                                         <Errors
+                                        className="text-danger"
+                                        model=".cp"
                                         show="touched"
                                         messages={{
                                             required: 'Required',
