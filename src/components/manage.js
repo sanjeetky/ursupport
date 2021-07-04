@@ -112,7 +112,7 @@ if(quantity!=0)
       <div class="col-md-1">{cost}</div>
       <div class="col-md-1">{cp}</div>
       <div class="col-md-1">{item.weight}</div>
-      <div class="col-md-1">{cost-cp}</div>
+      <div class="col-md-1">{cost.cp}</div>
       
     </div>
   )
