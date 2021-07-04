@@ -3,6 +3,7 @@ import { Breadcrumb, BreadcrumbItem,
     Button, Row, Col, Label } from 'reactstrap';
     import { Link } from 'react-router-dom';
 
+    import {baseUrl} from '../baseUrl';
 
 import { Control, LocalForm, Errors } from 'react-redux-form';
 const required = (val) => val && val.length;
@@ -38,10 +39,11 @@ class Insert extends Component {
             cost:values.cost,
             weight:values.weight,
             quantity:"1",
-            category:values.category
+            category:values.category,
+            cp:values.cp
           }
 
-         fetch( 'https://urbanreach.herokuapp.com/items',{
+         fetch( baseUrl+'/items',{
             method:"POST",
             headers:{ "Content-Type":"application/json"},
             body:JSON.stringify(obj)
@@ -196,6 +198,30 @@ class Insert extends Component {
                                      />
 
                           </Row>
+
+
+                          <Row className="form-group">
+
+<Label htmlFor="cp">buying price</Label>
+         <Control.text model=".cp" id="cp" name="cp"
+              className="form-control"
+              validators={{
+                 required, minLength: minLength(1)
+             }}
+             />
+              <Errors
+             className="text-danger"
+             model=".cp"
+             show="touched"
+             messages={{
+                 required: 'Required',
+                 minLength: 'Must be greater than 1 characters'                        
+             }}
+          />
+
+</Row>
+
+
 
                           <Row className="form-group">
 

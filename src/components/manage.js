@@ -50,6 +50,9 @@ componentDidMount()
         this.setState({item:data})
     })
     .catch(err=>console.log(err))
+    Total=0;
+   frequency=0;
+    
 }
 
 
@@ -97,12 +100,14 @@ const itemmanage=this.state.item.map((item)=>{
      
   let quantity=0;
   let cost=0;
+  let cp=0;
    this.state.delivery.map((dev)=>{
      dev.item.map(spitem=>{
        if(spitem.itemid==item.itemid)
        {
           quantity+=+spitem.quantity;
           cost+=+(spitem.cost*spitem.quantity);
+          cp+=+(spitem.cp*spitem.quantity)
        }
      })
 })
@@ -119,7 +124,9 @@ if(quantity!=0)
       <div class="col-md-2">{item.name}</div>
       <div class="col-md-1">{quantity}</div>
       <div class="col-md-1">{cost}</div>
+      <div class="col-md-1">{cp}</div>
       <div class="col-md-1">{item.weight}</div>
+      <div class="col-md-1">{cost-cp}</div>
       
     </div>
   )
@@ -143,14 +150,17 @@ if(quantity!=0)
             <p>address</p>
             </div>    
             {custmanage}
-            <p>Total amount: {Total}   Order count : {frequency}</p>
+            <h2>Total amount: {Total}   Order count : {frequency}</h2>
          
            <h1>Item Profile</h1>  
            <div class='row'>
            <div class="col-md-2">Name</div>
            <div class="col-md-1">quantity</div>
            <div class="col-md-1">selling price</div>
+           <div class="col-md-1">costing  price</div>
            <div class="col-md-1">weight</div>
+           <div class="col-md-1">margin</div>
+
            </div> 
           {itemmanage}
         
