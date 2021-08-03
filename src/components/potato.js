@@ -9,7 +9,7 @@ const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
 
-class Mandi extends Component {
+class Potato extends Component {
 constructor(props){
     super()
     this.state={
@@ -75,7 +75,7 @@ delete(data)
 }
   render() {
 
-    const items=this.state.item.filter((item)=>item.category=="festival").map((item)=>{
+    const items=this.state.item.filter((item)=>item.category=="potato").map((item)=>{
 
   
         return(
@@ -356,4 +356,4 @@ delete(data)
     );
   }
 }
-export default Mandi;
+export default Potato;

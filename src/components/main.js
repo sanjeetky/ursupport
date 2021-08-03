@@ -6,6 +6,8 @@ import Milk from './milk.js';
 import Mandi from './mandi.js';
 import Orders from './orders.js';
 import Manage from './manage.js';
+import Onion from './onion.js';
+import Potato from './potato.js';
 import {baseUrl} from '../baseUrl';
 
 
@@ -82,7 +84,16 @@ componentDidMount()
                 <Manage  />
             );
           };
-        
+          const PotatoPage = () => {
+            return(
+                <Potato />
+            );
+          };
+          const OnionPage = () => {
+            return(
+                <Onion />
+            );
+          };
 
         
 
@@ -105,6 +116,9 @@ componentDidMount()
                    <Route exact path='/mandi' component={MandiPage} />
                    <Route exact path='/fruit' component={FruitPage} />
                    <Route exact path='/orders' component={OrdersPage} />
+                   <Route exact path='/potato' component={PotatoPage} />
+                   <Route exact path='/onion' component={OnionPage} />
+
                  
                    <Route exact path='/delivery' component={DeliveryPage} />
                    <Route exact path='/management' component={ManagementPage} />

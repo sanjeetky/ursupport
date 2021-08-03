@@ -33,14 +33,18 @@ class Insert extends Component {
           var obj={
             name:values.name,
             description: values.description,
-            itemid: values.category+values.name,
-            img: values.img,
+            itemid: values.category+values.name+values.brand,
+            img: values.img1,
             brand:values.character,
-            cost:values.cost,
-            weight:values.weight,
+            cost:values.cost1,
+            weight:values.weight1,
             quantity:"1",
             category:values.category,
-            cp:values.cp
+            cp:values.cp,
+            picker:[
+                 {img:values.img1,weight:values.weight1,cost:values.cost1},
+                 {img:values.img2,weight:values.weight2,cost:values.cost2},
+            ]
           }
 
          fetch( baseUrl+'/items',{
@@ -71,11 +75,20 @@ class Insert extends Component {
                       </Link>
                      
                       <Link to={`/mandi`} >
-                        <Button style={{margin:20}} >Mandi</Button>
+                        <Button style={{margin:20}} >Festival</Button>
                       </Link>
                      <Link to={`/milkproduct`} >
                         <Button style={{margin:20}} >Milk Product</Button>
                     </Link>
+
+                    <Link to={`/potato`} >
+                        <Button style={{margin:20}} >Potato</Button>
+                    </Link>
+                   
+                    <Link to={`/onion`} >
+                        <Button style={{margin:20}} >Onion</Button>
+                    </Link>
+                   
                     <Link to={`/orders`} >
                         <Button style={{margin:20}} >Orders</Button>
                     </Link>
@@ -138,7 +151,7 @@ class Insert extends Component {
 
                                  
                             <Row className="form-group">
-                            <Label htmlFor="character" >Items character</Label>
+                            <Label htmlFor="character" >Brand</Label>
                                 
                                     <Control.text model=".character" id="character" name="character"
                                         placeholder="size:small"
@@ -158,46 +171,9 @@ class Insert extends Component {
                                      />
                                </Row>
 
-                               <Row className="form-group">
-                                <Label htmlFor="img" >Image</Label>
-                                    < Control.text model=".img" id="img" name="img"
-                                        placeholder="image address"
-                                        className="form-control"
-                                        validators={{
-                                            required, minLength: minLength(1)
-                                        }}
-                                        />
-                                            <Errors
-                                        className="text-danger"
-                                        model=".img"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required',
-                                            minLength: 'Must be greater than 1 characters',
-                                        }}
-                                     />
-                           </Row>
+                           
 
-                           <Row className="form-group">
-
-                           <Label htmlFor="cost">Cost</Label>
-                                    <Control.text model=".cost" id="cost" name="cost"
-                                         className="form-control"
-                                         validators={{
-                                            required, minLength: minLength(1)
-                                        }}
-                                        />
-                                         <Errors
-                                        className="text-danger"
-                                        model=".cost"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required',
-                                            minLength: 'Must be greater than 1 characters'                        
-                                        }}
-                                     />
-
-                          </Row>
+                          
 
 
                           <Row className="form-group">
@@ -222,11 +198,11 @@ class Insert extends Component {
 </Row>
 
 
+<h3>Picker1</h3>
 
-                          <Row className="form-group">
-
-<Label htmlFor="weight">Weight</Label>
-         <Control.text model=".weight" id="weight" name="weight"
+<Row className="form-group">   
+<Label htmlFor="cost1">cost1</Label>
+         <Control.text model=".cost1" id="cost1" name="cost1"
               className="form-control"
               validators={{
                  required, minLength: minLength(1)
@@ -234,7 +210,7 @@ class Insert extends Component {
              />
               <Errors
              className="text-danger"
-             model=".weight"
+             model="cost1"
              show="touched"
              messages={{
                  required: 'Required',
@@ -243,6 +219,118 @@ class Insert extends Component {
           />
 
 </Row>
+<Row className="form-group">   
+<Label htmlFor="weight1">weight1</Label>
+         <Control.text model=".weight1" id="weight1" name="weight1"
+              className="form-control"
+              validators={{
+                 required, minLength: minLength(1)
+             }}
+             />
+              <Errors
+             className="text-danger"
+             model="weight1"
+             show="touched"
+             messages={{
+                 required: 'Required',
+                 minLength: 'Must be greater than 1 characters'                        
+             }}
+          />
+
+</Row>
+<Row className="form-group">   
+<Label htmlFor="img1">img1</Label>
+         <Control.text model=".img1" id="img1" name="img1"
+              className="form-control"
+              validators={{
+                 required, minLength: minLength(1)
+             }}
+             />
+              <Errors
+             className="text-danger"
+             model="img1"
+             show="touched"
+             messages={{
+                 required: 'Required',
+                 minLength: 'Must be greater than 1 characters'                        
+             }}
+          />
+
+</Row>
+
+<h3>Picker2</h3>
+
+<Row className="form-group">   
+<Label htmlFor="cost2">cost2</Label>
+         <Control.text model=".cost2" id="cost2" name="cost2"
+              className="form-control"
+              validators={{
+                 required, minLength: minLength(1)
+             }}
+             />
+              <Errors
+             className="text-danger"
+             model="cost2"
+             show="touched"
+             messages={{
+                 required: 'Required',
+                 minLength: 'Must be greater than 1 characters'                        
+             }}
+          />
+
+</Row>
+
+
+<Row className="form-group">   
+<Label htmlFor="weight2">weight2</Label>
+         <Control.text model=".weight2" id="weight2" name="weight2"
+              className="form-control"
+              validators={{
+                 required, minLength: minLength(1)
+             }}
+             />
+              <Errors
+             className="text-danger"
+             model="weight2"
+             show="touched"
+             messages={{
+                 required: 'Required',
+                 minLength: 'Must be greater than 1 characters'                        
+             }}
+          />
+
+</Row>
+
+
+
+<Row className="form-group">   
+<Label htmlFor="img2">img2</Label>
+         <Control.text model=".img2" id="img2" name="img2"
+              className="form-control"
+              validators={{
+                 required, minLength: minLength(1)
+             }}
+             />
+              <Errors
+             className="text-danger"
+             model="img2"
+             show="touched"
+             messages={{
+                 required: 'Required',
+                 minLength: 'Must be greater than 1 characters'                        
+             }}
+          />
+
+</Row>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -256,8 +344,9 @@ class Insert extends Component {
                                          <option value="vegetable">vegetable</option>
                                          <option value="milkproduct">milkproduct</option>
                                          <option value="fruit">fruit</option>
-                                         <option value="special">mandi</option>
                                          <option value="festival">festival</option>
+                                         <option value="potato">Potato</option>
+                                         <option value="onion">Onion</option>
                                         </Control.select>
                            </Row>
                          
