@@ -14,6 +14,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
 
 let Total=0;
 let frequency=0;
+let margin=0;
 
 
 class Dikhao extends React.Component {
@@ -56,6 +57,7 @@ class Dikhao extends React.Component {
           
           Total=0;
           frequency=0;
+          margin=0;
      
       }
       
@@ -64,7 +66,7 @@ class Dikhao extends React.Component {
     render () {
         Total=0;
         frequency=0;
-   
+   margin=0;
         const custmanage=this.state.cust.map((item)=>{
      
             let totalvalue=0;
@@ -99,13 +101,15 @@ class Dikhao extends React.Component {
      let quantity=0;
      let cost=0;
      let cp=0;
+     
       this.state.delivery.filter(item=>item.date[4]==this.props.time[0]&&item.date[5]==this.props.time[1]&&item.date[6]==this.props.time[2]).map((dev)=>{
         dev.item.map(spitem=>{
-          if(spitem.itemid==item.itemid)
+          if(spitem.itemid==item.itemid&&spitem.brand==item.brand)
           {
              quantity+=+spitem.quantity;
              cost+=+(spitem.cost*spitem.quantity);
              cp+=+(spitem.cp*spitem.quantity)
+             margin=margin+(cost-cp)
           }
         })
    })
@@ -114,12 +118,12 @@ class Dikhao extends React.Component {
     
      return(
        <div class='row'>
-         <div class="col-md-2">{item.name}</div>
+         <div class="col-md-2">{item.name + " ("+ item.brand +")"}</div>
          <div class="col-md-1">{quantity}</div>
          <div class="col-md-1">{cost}</div>
          <div class="col-md-1">{cp}</div>
          <div class="col-md-1">{item.weight}</div>
-         <div class="col-md-1">{cost.cp}</div>
+         <div class="col-md-1">{cost-cp}</div>
          
        </div>
      )
@@ -143,13 +147,14 @@ class Dikhao extends React.Component {
            <div class='row'>
            <div class="col-md-2">Name</div>
            <div class="col-md-1">quantity</div>
-           <div class="col-md-1">selling price</div>
-           <div class="col-md-1">costing  price</div>
+           <div class="col-md-1">Total selling price</div>
+           <div class="col-md-1">Total costing  price</div>
            <div class="col-md-1">weight</div>
            <div class="col-md-1">margin</div>
 
            </div> 
           {itemmanage}
+          <h2>{margin}</h2>
         </div>
       )
     }
