@@ -8,6 +8,7 @@ import Orders from './orders.js';
 import Manage from './manage.js';
 import Onion from './onion.js';
 import Potato from './potato.js';
+import Dayreport from './dayreport';
 import {baseUrl} from '../baseUrl';
 
 
@@ -95,10 +96,11 @@ componentDidMount()
             );
           };
 
-        
-
-        
-         
+          const DayreportPage = () => {
+            return(
+                <Dayreport />
+            );
+          };
 
 
           const OrdersPage = () => {
@@ -118,6 +120,7 @@ componentDidMount()
                    <Route exact path='/orders' component={OrdersPage} />
                    <Route exact path='/potato' component={PotatoPage} />
                    <Route exact path='/onion' component={OnionPage} />
+                   <Route exact path='/dayreport' component={DayreportPage} />
 
                  
                    <Route exact path='/delivery' component={DeliveryPage} />

@@ -92,8 +92,10 @@ class Insert extends Component {
                     <Link to={`/orders`} >
                         <Button style={{margin:20}} >Orders</Button>
                     </Link>
-                    <Link to={`/management`} >
-                        <Button style={{margin:20}} >July</Button>
+                   
+
+                    <Link to={`/dayreport`} >
+                        <Button style={{margin:20}} >Monthly Report</Button>
                     </Link>
 
                     <hr/>
