@@ -10,7 +10,7 @@ import Onion from './onion.js';
 import Potato from './potato.js';
 import Dayreport from './dayreport';
 import {baseUrl} from '../baseUrl';
-
+import User from './user';
 
 
 
@@ -108,10 +108,18 @@ componentDidMount()
                 <Orders />
             );
           };
+
+
+          const UserPage = () => {
+            return(
+                <User/>
+            );
+          };
           
         return (
             <div>
                  <Switch>
+                 <Route exact path='/user' component={UserPage} />
                    <Route exact path='/insert' component={InsertPage} />
                    <Route exact path='/vegetable' component={VegPage} />
                    <Route exact path='/milkproduct' component={MilkPage} />
@@ -127,7 +135,7 @@ componentDidMount()
                    <Route exact path='/management' component={ManagementPage} />
                    
 
-                   <Redirect to="/insert" />
+                   <Redirect to="/user" />
                    </Switch>
             </div>
   

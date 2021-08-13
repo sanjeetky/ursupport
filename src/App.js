@@ -3,7 +3,9 @@ import './App.css';
 import Main from './components/main.js';
 import { BrowserRouter } from 'react-router-dom';
 class App extends Component {
-    
+  
+
+
   render() {
     return (
       <BrowserRouter>
