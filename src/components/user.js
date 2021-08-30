@@ -18,7 +18,7 @@ const User = () => {
 
     const handleClick = (values) => {
         if(values.username=='not'&&values.password=='this time')
-        history.push("/insert");
+        history.push("/notthistimeinsert");
         else
         console.log("Not valid")
     }

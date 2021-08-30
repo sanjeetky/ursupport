@@ -98,39 +98,39 @@ else
                       <h3>Insert Page</h3>
                      
                    
-                      <Link to={`/vegetable`} >
+                      <Link to={`/notthistimevegetable`} >
                       <Button  style={{margin:20}}> Vegetable</Button>
                       </Link>
-                      <Link to={`/fruit`} >
+                      <Link to={`/notthistimefruit`} >
                         <Button style={{margin:20}} >Fruit</Button>
                       </Link>
                      
-                      <Link to={`/mandi`} >
+                      <Link to={`/notthistimemandi`} >
                         <Button style={{margin:20}} >Festival</Button>
                       </Link>
-                     <Link to={`/milkproduct`} >
+                     <Link to={`/notthistimemilkproduct`} >
                         <Button style={{margin:20}} >Milk Product</Button>
                     </Link>
 
-                    <Link to={`/potato`} >
+                    <Link to={`/notthistimepotato`} >
                         <Button style={{margin:20}} >Potato</Button>
                     </Link>
                    
-                    <Link to={`/onion`} >
+                    <Link to={`/notthistimeonion`} >
                         <Button style={{margin:20}} >Onion</Button>
                     </Link>
                    
-                    <Link to={`/orders`} >
+                    <Link to={`/notthistimeorders`} >
                         <Button style={{margin:20}} >Orders</Button>
                     </Link>
                    
 
-                    <Link to={`/dayreport`} >
+                    <Link to={`/notthistimedayreport`} >
                         <Button style={{margin:20}} >Monthly Report</Button>
                     </Link>
 
                     <hr/>
-                    <Link to={`/delivery`} >
+                    <Link to={`/notthistimedelivery`} >
                         <Button style={{margin:20}} >Delivery</Button>
                     </Link>
                    
