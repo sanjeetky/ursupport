@@ -120,15 +120,15 @@ componentDidMount()
             <div>
                  <Switch>
                  <Route exact path='/user' component={UserPage} />
-                   <Route exact path='/insert' component={InsertPage} />
-                   <Route exact path='/vegetable' component={VegPage} />
-                   <Route exact path='/milkproduct' component={MilkPage} />
-                   <Route exact path='/mandi' component={MandiPage} />
-                   <Route exact path='/fruit' component={FruitPage} />
-                   <Route exact path='/orders' component={OrdersPage} />
-                   <Route exact path='/potato' component={PotatoPage} />
-                   <Route exact path='/onion' component={OnionPage} />
-                   <Route exact path='/dayreport' component={DayreportPage} />
+                   <Route exact path='/notthistimeinsert' component={InsertPage} />
+                   <Route exact path='/notthistimevegetable' component={VegPage} />
+                   <Route exact path='/notthistimemilkproduct' component={MilkPage} />
+                   <Route exact path='/notthistimemandi' component={MandiPage} />
+                   <Route exact path='/notthistimefruit' component={FruitPage} />
+                   <Route exact path='/notthistimeorders' component={OrdersPage} />
+                   <Route exact path='/notthistimepotato' component={PotatoPage} />
+                   <Route exact path='/notthistimeonion' component={OnionPage} />
+                   <Route exact path='/notthistimedayreport' component={DayreportPage} />
 
                  
                    <Route exact path='/delivery' component={DeliveryPage} />

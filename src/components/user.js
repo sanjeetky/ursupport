@@ -17,11 +17,33 @@ const User = () => {
     const history = useHistory();
 
     const handleClick = (values) => {
-        if(values.username=='U'&&values.password=='R')
+        if(values.username=='not'&&values.password=='this time')
         history.push("/insert");
         else
         console.log("Not valid")
     }
+
+    const updateClick = (values) => {
+        fetch(baseUrl+'/users/urstar',{
+            method:"PUT",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({  username:values.updateusername})
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.success=='true')
+            alert("updated")
+            else
+            alert("not updated")
+        }
+            
+            )
+        .catch(err=>console.log(err))
+        
+      
+       
+    }
+
 
     return (
         <div>
@@ -84,6 +106,38 @@ const User = () => {
                         </LocalForm>
                     </div>
                </div>
+               <LocalForm onSubmit={(values) => updateClick(values)}>
+                            <Row className="form-group">
+                                <Label htmlFor="username"> UserName</Label>
+                                
+                                    <Control.text model=".updateusername" id="updateusername" name="updateusername"
+                                        placeholder="UserName"
+                                        className="form-control"
+                                        validators={{
+                                            required, minLength: minLength(1), maxLength: maxLength(18)
+                                        }}
+                                        />
+                                        <Errors
+                                        className="text-danger"
+                                        model=".updateusername"
+                                        show="touched"
+                                        messages={{
+                                            required: 'Required',
+                                            minLength: 'Must be greater than 1 characters',
+                                            maxLength: 'Must be 18 characters or less'
+                                        }}
+                                     />
+                               </Row>
+                            
+                           
+                            <Row className="form-group">
+                               
+                                    <Button type="submit" color="primary">
+                                        Update
+                                    </Button>
+                             
+                                    </Row>
+                        </LocalForm>
 
                </div>
       

@@ -30,34 +30,65 @@ class Insert extends Component {
        
       
          
-          var obj={
-            name:values.name,
-            description: values.description,
-            itemid: values.category+values.name+values.brand,
-            img: values.img1,
-            brand:values.character,
-            cost:values.cost1,
-            weight:values.weight1,
-            quantity:"1",
-            category:values.category,
-            cp:values.cp,
-            picker:[
-                 {img:values.img1,weight:values.weight1,cost:values.cost1},
-                 {img:values.img2,weight:values.weight2,cost:values.cost2},
-            ]
-          }
-
-         fetch( baseUrl+'/items',{
-            method:"POST",
-            headers:{ "Content-Type":"application/json"},
-            body:JSON.stringify(obj)
-          
-        })
-        .then(data=>data.json())
-        .then(data=>alert(data.status))
-        .catch(err=>console.log(err))
-   
-    };
+         
+if(values.btype=="business")
+{
+    var obj1={
+        name:values.name,
+        description: values.description,
+        itemid:"restro"+ values.category+values.name+values.brand,
+        img: values.img1,
+        brand:values.character,
+        cost:values.cost1,
+        weight:values.weight1,
+        quantity:"1",
+        category:values.category,
+        cp:values.cp,
+        picker:[
+             {img:values.img1,weight:values.weight1,cost:values.cost1},
+             {img:values.img2,weight:values.weight2,cost:values.cost2},
+        ]
+      }
+    fetch( baseUrl+'/restroitems',{
+        method:"POST",
+        headers:{ "Content-Type":"application/json"},
+        body:JSON.stringify(obj1)
+      
+    })
+    .then(data=>data.json())
+    .then(data=>alert(data.status))
+    .catch(err=>console.log(err))
+}
+else
+{
+    var obj2={
+        name:values.name,
+        description: values.description,
+        itemid: values.category+values.name+values.brand,
+        img: values.img1,
+        brand:values.character,
+        cost:values.cost1,
+        weight:values.weight1,
+        quantity:"1",
+        category:values.category,
+        cp:values.cp,
+        picker:[
+             {img:values.img1,weight:values.weight1,cost:values.cost1},
+             {img:values.img2,weight:values.weight2,cost:values.cost2},
+        ]
+      }
+    fetch( baseUrl+'/items',{
+        method:"POST",
+        headers:{ "Content-Type":"application/json"},
+        body:JSON.stringify(obj2)
+      
+    })
+    .then(data=>data.json())
+    .then(data=>alert(data.status))
+    .catch(err=>console.log(err))
+}
+        
+};
 
     render() {
         return(
@@ -352,7 +383,17 @@ class Insert extends Component {
                                         </Control.select>
                            </Row>
                          
-                          
+                           <Row className="form-group" >
+                                <Label htmlFor="btype" >Business type </Label>
+                                    <Control.select model=".btype" id="btype" name="btype"
+                                        placeholder="btype"
+                                        className="form-control"  
+                                        defaultValue="customer"
+                                        > 
+                                         <option value="customer">customer</option>
+                                         <option value="business">business</option>
+                                        </Control.select>
+                           </Row>
                          
                             
                             <Row className="form-group">
