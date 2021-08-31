@@ -123,7 +123,7 @@ if(quantity!=0)
       <div>
           <h1>July</h1>
 
-          <Link to={`/insert`} >
+          <Link to={`/notthistimeinsert`} >
                <Button  >Insert Page</Button>
          </Link>    
 

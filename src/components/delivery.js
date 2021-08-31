@@ -152,7 +152,7 @@ cancel(data){
       <div>
           <h1>Manage</h1>
 
-          <Link to={`/insert`} >
+          <Link to={`/notthistimeinsert`} >
                <Button  >Insert Page</Button>
          </Link>          
           {items}

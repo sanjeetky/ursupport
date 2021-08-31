@@ -119,7 +119,7 @@ componentDidMount()
         return (
             <div>
                  <Switch>
-                 <Route exact path='/user' component={UserPage} />
+                 <Route exact path='/hellouser' component={UserPage} />
                    <Route exact path='/notthistimeinsert' component={InsertPage} />
                    <Route exact path='/notthistimevegetable' component={VegPage} />
                    <Route exact path='/notthistimemilkproduct' component={MilkPage} />
@@ -131,11 +131,11 @@ componentDidMount()
                    <Route exact path='/notthistimedayreport' component={DayreportPage} />
 
                  
-                   <Route exact path='/delivery' component={DeliveryPage} />
-                   <Route exact path='/management' component={ManagementPage} />
+                   <Route exact path='/notthistimedelivery' component={DeliveryPage} />
+                   <Route exact path='/notthistimemanagement' component={ManagementPage} />
                    
 
-                   <Redirect to="/user" />
+                   <Redirect to="/hellouser" />
                    </Switch>
             </div>
   
