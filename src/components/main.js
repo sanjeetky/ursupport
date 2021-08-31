@@ -9,6 +9,7 @@ import Manage from './manage.js';
 import Onion from './onion.js';
 import Potato from './potato.js';
 import Dayreport from './dayreport';
+import Deliveryman from './deliveryman.js';
 import {baseUrl} from '../baseUrl';
 import User from './user';
 
@@ -46,6 +47,12 @@ componentDidMount()
           const VegPage = () => {
             return(
                 <Vegetable  />
+            );
+          };
+
+          const DeliverymanPage = () => {
+            return(
+                <Deliveryman  />
             );
           };
 
@@ -130,7 +137,7 @@ componentDidMount()
                    <Route exact path='/notthistimeonion' component={OnionPage} />
                    <Route exact path='/notthistimedayreport' component={DayreportPage} />
 
-                 
+                   <Route exact path='/deliveryman' component={DeliverymanPage} />
                    <Route exact path='/notthistimedelivery' component={DeliveryPage} />
                    <Route exact path='/notthistimemanagement' component={ManagementPage} />
                    
