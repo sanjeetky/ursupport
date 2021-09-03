@@ -20,6 +20,9 @@ import RestroMandi from './restromandi.js';
 import RestroOnion from './restroonion.js';
 import RestroPotato from './restropotato.js';
 
+
+import Restro from './restaurant';
+
 import Delivery from './delivery.js';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
@@ -176,6 +179,12 @@ componentDidMount()
                 <User/>
             );
           };
+
+          const RestroPage = () => {
+            return(
+                <Restro/>
+            );
+          };
           
         return (
             <div>
@@ -199,6 +208,9 @@ componentDidMount()
                    <Route exact path='/notthistimerestroonion' component={RestroOnionPage} />
 
                    <Route exact path='/notthistimedayreport' component={DayreportPage} />
+
+                   <Route exact path='/notthistimerestro' component={RestroPage} />
+
 
                    <Route exact path='/deliveryman' component={DeliverymanPage} />
                    <Route exact path='/notthistimedelivery' component={DeliveryPage} />

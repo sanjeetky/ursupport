@@ -152,6 +152,12 @@ else
                     <Link to={`/notthistimerestroonion`} >
                         <Button style={{margin:20}} >Onion</Button>
                     </Link>
+
+
+                    <Link to={`/notthistimerestro`} >
+                        <Button style={{margin:20}} >Restaurant</Button>
+                    </Link>
+
                     <hr/>
                     <Link to={`/notthistimedelivery`} >
                         <Button style={{margin:20}} >Delivery</Button>
