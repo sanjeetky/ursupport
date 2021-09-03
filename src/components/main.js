@@ -13,7 +13,12 @@ import Deliveryman from './deliveryman.js';
 import {baseUrl} from '../baseUrl';
 import User from './user';
 
-
+import RestroVegetable from './restrovegetable.js';
+import RestroFruit from './restrofruit.js';
+import RestroMilk from './restromilk.js';
+import RestroMandi from './restromandi.js';
+import RestroOnion from './restroonion.js';
+import RestroPotato from './restropotato.js';
 
 import Delivery from './delivery.js';
 import { Switch, Route, Redirect } from 'react-router-dom';
@@ -43,13 +48,6 @@ componentDidMount()
             );
           };
         
-         
-          const VegPage = () => {
-            return(
-                <Vegetable  />
-            );
-          };
-
           const DeliverymanPage = () => {
             return(
                 <Deliveryman  />
@@ -57,6 +55,14 @@ componentDidMount()
           };
 
 
+         
+          const VegPage = () => {
+            return(
+                <Vegetable  />
+            );
+          };
+
+         
          
           const  MilkPage = () => {
             return(
@@ -81,6 +87,64 @@ componentDidMount()
           };
         
 
+        
+          const PotatoPage = () => {
+            return(
+                <Potato />
+            );
+          };
+          const OnionPage = () => {
+            return(
+                <Onion />
+            );
+          };
+
+
+
+
+          
+          const RestroVegPage = () => {
+            return(
+                <RestroVegetable  />
+            );
+          };
+
+         
+         
+          const  RestroMilkPage = () => {
+            return(
+                <RestroMilk  />
+            );
+          };
+
+
+          const RestroFruitPage = () => {
+            return(
+                <RestroFruit />
+            );
+          };
+         
+
+
+         
+          const RestroMandiPage = () => {
+            return(
+                <RestroMandi />
+            );
+          };
+        
+
+        
+          const RestroPotatoPage = () => {
+            return(
+                <RestroPotato />
+            );
+          };
+          const RestroOnionPage = () => {
+            return(
+                <RestroOnion />
+            );
+          };
           const DeliveryPage = () => {
             return(
                 <Delivery  />
@@ -90,16 +154,6 @@ componentDidMount()
           const ManagementPage = () => {
             return(
                 <Manage  />
-            );
-          };
-          const PotatoPage = () => {
-            return(
-                <Potato />
-            );
-          };
-          const OnionPage = () => {
-            return(
-                <Onion />
             );
           };
 
@@ -135,6 +189,15 @@ componentDidMount()
                    <Route exact path='/notthistimeorders' component={OrdersPage} />
                    <Route exact path='/notthistimepotato' component={PotatoPage} />
                    <Route exact path='/notthistimeonion' component={OnionPage} />
+
+
+                   <Route exact path='/notthistimerestrovegetable' component={RestroVegPage} />
+                   <Route exact path='/notthistimerestromilkproduct' component={RestroMilkPage} />
+                   <Route exact path='/notthistimerestromandi' component={RestroMandiPage} />
+                   <Route exact path='/notthistimerestrofruit' component={RestroFruitPage} />
+                   <Route exact path='/notthistimerestropotato' component={RestroPotatoPage} />
+                   <Route exact path='/notthistimerestroonion' component={RestroOnionPage} />
+
                    <Route exact path='/notthistimedayreport' component={DayreportPage} />
 
                    <Route exact path='/deliveryman' component={DeliverymanPage} />

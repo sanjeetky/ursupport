@@ -95,7 +95,7 @@ else
             <div className="container">
                 <div className="row row-content">
                    <div  style={{flexDirection:'row'}}>
-                      <h3>Insert Page</h3>
+                      <h3>Customer</h3>
                      
                    
                       <Link to={`/notthistimevegetable`} >
@@ -129,6 +129,29 @@ else
                         <Button style={{margin:20}} >Monthly Report</Button>
                     </Link>
 
+                    <hr/>
+                        <h3>Restaurant</h3>
+                    <Link to={`/notthistimerestrovegetable`} >
+                      <Button  style={{margin:20}}> Vegetable</Button>
+                      </Link>
+                      <Link to={`/notthistimerestrofruit`} >
+                        <Button style={{margin:20}} >Fruit</Button>
+                      </Link>
+                     
+                      <Link to={`/notthistimerestromandi`} >
+                        <Button style={{margin:20}} >Festival</Button>
+                      </Link>
+                     <Link to={`/notthistimerestromilkproduct`} >
+                        <Button style={{margin:20}} >Milk Product</Button>
+                    </Link>
+
+                    <Link to={`/notthistimerestropotato`} >
+                        <Button style={{margin:20}} >Potato</Button>
+                    </Link>
+                   
+                    <Link to={`/notthistimerestroonion`} >
+                        <Button style={{margin:20}} >Onion</Button>
+                    </Link>
                     <hr/>
                     <Link to={`/notthistimedelivery`} >
                         <Button style={{margin:20}} >Delivery</Button>
