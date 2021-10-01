@@ -13,15 +13,10 @@ import Deliveryman from './deliveryman.js';
 import {baseUrl} from '../baseUrl';
 import User from './user';
 
-import RestroVegetable from './restrovegetable.js';
-import RestroFruit from './restrofruit.js';
-import RestroMilk from './restromilk.js';
-import RestroMandi from './restromandi.js';
-import RestroOnion from './restroonion.js';
-import RestroPotato from './restropotato.js';
 
 
-import Restro from './restaurant';
+
+
 
 import Delivery from './delivery.js';
 import { Switch, Route, Redirect } from 'react-router-dom';
@@ -106,48 +101,6 @@ componentDidMount()
 
 
           
-          const RestroVegPage = () => {
-            return(
-                <RestroVegetable  />
-            );
-          };
-
-         
-         
-          const  RestroMilkPage = () => {
-            return(
-                <RestroMilk  />
-            );
-          };
-
-
-          const RestroFruitPage = () => {
-            return(
-                <RestroFruit />
-            );
-          };
-         
-
-
-         
-          const RestroMandiPage = () => {
-            return(
-                <RestroMandi />
-            );
-          };
-        
-
-        
-          const RestroPotatoPage = () => {
-            return(
-                <RestroPotato />
-            );
-          };
-          const RestroOnionPage = () => {
-            return(
-                <RestroOnion />
-            );
-          };
           const DeliveryPage = () => {
             return(
                 <Delivery  />
@@ -180,44 +133,35 @@ componentDidMount()
             );
           };
 
-          const RestroPage = () => {
-            return(
-                <Restro/>
-            );
-          };
+        
           
         return (
             <div>
                  <Switch>
-                 <Route exact path='/hellouser' component={UserPage} />
-                   <Route exact path='/notthistimeinsert' component={InsertPage} />
-                   <Route exact path='/notthistimevegetable' component={VegPage} />
-                   <Route exact path='/notthistimemilkproduct' component={MilkPage} />
-                   <Route exact path='/notthistimemandi' component={MandiPage} />
-                   <Route exact path='/notthistimefruit' component={FruitPage} />
-                   <Route exact path='/notthistimeorders' component={OrdersPage} />
-                   <Route exact path='/notthistimepotato' component={PotatoPage} />
-                   <Route exact path='/notthistimeonion' component={OnionPage} />
+                 <Route exact path='/admin' component={UserPage} />
+                   <Route exact path='/helloinsert' component={InsertPage} />
+                   <Route exact path='/hellovegetable' component={VegPage} />
+                   <Route exact path='/hellomilkproduct' component={MilkPage} />
+                   <Route exact path='/hellomandi' component={MandiPage} />
+                   <Route exact path='/hellofruit' component={FruitPage} />
+                   <Route exact path='/helloorders' component={OrdersPage} />
+                   <Route exact path='/hellopotato' component={PotatoPage} />
+                   <Route exact path='/helloonion' component={OnionPage} />
 
 
-                   <Route exact path='/notthistimerestrovegetable' component={RestroVegPage} />
-                   <Route exact path='/notthistimerestromilkproduct' component={RestroMilkPage} />
-                   <Route exact path='/notthistimerestromandi' component={RestroMandiPage} />
-                   <Route exact path='/notthistimerestrofruit' component={RestroFruitPage} />
-                   <Route exact path='/notthistimerestropotato' component={RestroPotatoPage} />
-                   <Route exact path='/notthistimerestroonion' component={RestroOnionPage} />
+                  
 
-                   <Route exact path='/notthistimedayreport' component={DayreportPage} />
+                   <Route exact path='/hellodayreport' component={DayreportPage} />
 
-                   <Route exact path='/notthistimerestro' component={RestroPage} />
+                
 
 
                    <Route exact path='/deliveryman' component={DeliverymanPage} />
-                   <Route exact path='/notthistimedelivery' component={DeliveryPage} />
-                   <Route exact path='/notthistimemanagement' component={ManagementPage} />
+                   <Route exact path='/hellodelivery' component={DeliveryPage} />
+                   <Route exact path='/hellomanagement' component={ManagementPage} />
                    
 
-                   <Redirect to="/hellouser" />
+                   <Redirect to="/admin" />
                    </Switch>
             </div>
   

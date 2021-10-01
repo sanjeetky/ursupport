@@ -98,68 +98,42 @@ else
                       <h3>Customer</h3>
                      
                    
-                      <Link to={`/notthistimevegetable`} >
+                      <Link to={`/hellovegetable`} >
                       <Button  style={{margin:20}}> Vegetable</Button>
                       </Link>
-                      <Link to={`/notthistimefruit`} >
+                      <Link to={`/hellofruit`} >
                         <Button style={{margin:20}} >Fruit</Button>
                       </Link>
                      
-                      <Link to={`/notthistimemandi`} >
+                      <Link to={`/hellomandi`} >
                         <Button style={{margin:20}} >Festival</Button>
                       </Link>
-                     <Link to={`/notthistimemilkproduct`} >
+                     <Link to={`/hellomilkproduct`} >
                         <Button style={{margin:20}} >Milk Product</Button>
                     </Link>
 
-                    <Link to={`/notthistimepotato`} >
+                    <Link to={`/hellopotato`} >
                         <Button style={{margin:20}} >Potato</Button>
                     </Link>
                    
-                    <Link to={`/notthistimeonion`} >
+                    <Link to={`/helloonion`} >
                         <Button style={{margin:20}} >Onion</Button>
                     </Link>
                    
-                    <Link to={`/notthistimeorders`} >
+                    <Link to={`/helloorders`} >
                         <Button style={{margin:20}} >Orders</Button>
                     </Link>
                    
 
-                    <Link to={`/notthistimedayreport`} >
+                    <Link to={`/hellodayreport`} >
                         <Button style={{margin:20}} >Monthly Report</Button>
                     </Link>
 
                     <hr/>
-                        <h3>Restaurant</h3>
-                    <Link to={`/notthistimerestrovegetable`} >
-                      <Button  style={{margin:20}}> Vegetable</Button>
-                      </Link>
-                      <Link to={`/notthistimerestrofruit`} >
-                        <Button style={{margin:20}} >Fruit</Button>
-                      </Link>
-                     
-                      <Link to={`/notthistimerestromandi`} >
-                        <Button style={{margin:20}} >Festival</Button>
-                      </Link>
-                     <Link to={`/notthistimerestromilkproduct`} >
-                        <Button style={{margin:20}} >Milk Product</Button>
-                    </Link>
-
-                    <Link to={`/notthistimerestropotato`} >
-                        <Button style={{margin:20}} >Potato</Button>
-                    </Link>
-                   
-                    <Link to={`/notthistimerestroonion`} >
-                        <Button style={{margin:20}} >Onion</Button>
-                    </Link>
-
-
-                    <Link to={`/notthistimerestro`} >
-                        <Button style={{margin:20}} >Restaurant</Button>
-                    </Link>
+                       
 
                     <hr/>
-                    <Link to={`/notthistimedelivery`} >
+                    <Link to={`/hellodelivery`} >
                         <Button style={{margin:20}} >Delivery</Button>
                     </Link>
                    

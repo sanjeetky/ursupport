@@ -348,8 +348,8 @@ delete(data)
       <div>
           <h1>Manage</h1>
 
-          <Link to={`/notthistimeinsert`} >
-               <Button  >Insert Page</Button>
+          <Link to={`/helloinsert`} >
+                             <Button  >Insert Page</Button>
          </Link>          
           {items}
       </div>
