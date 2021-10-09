@@ -96,39 +96,40 @@ class Dikhao extends React.Component {
            };
    })
    
-   const itemmanage=this.state.item.map((item)=>{
+   const itemmanage=this.state.delivery.map((item)=>{
         
-     let quantity=0;
-     let cost=0;
-     let cp=0;
      
-      this.state.delivery.filter(item=>item.date[4]==this.props.time[0]&&item.date[5]==this.props.time[1]&&item.date[6]==this.props.time[2]).map((dev)=>{
-        dev.item.map(spitem=>{
-          if(spitem.itemid==item.itemid&&spitem.brand==item.brand)
-          {
-             quantity+=+spitem.quantity;
-             cost+=+(spitem.cost*spitem.quantity);
-             cp+=+(spitem.cp*spitem.quantity)
-             margin=margin+(cost-cp)
-          }
-        })
-   })
-   if(quantity!=0)
-    {
+ 
     
      return(
        <div class='row'>
-         <div class="col-md-2">{item.name + " ("+ item.brand +")"}</div>
-         <div class="col-md-1">{quantity}</div>
-         <div class="col-md-1">{cost}</div>
-         <div class="col-md-1">{cp}</div>
-         <div class="col-md-1">{item.weight}</div>
-         <div class="col-md-1">{cost-cp}</div>
+        <div class="col-md-3">{item.username}</div>
+         <div class="col-md-6">{item.date}</div>
+         <div class="col-md-3">{item.price}</div>
+         
          
        </div>
      )
-    };
+  
    })
+
+
+   const custdetail=this.state.cust.map((item)=>{
+        
+     
+ 
+    
+    return(
+      <div class='row'>
+       <div class="col-md-4">{item.username}</div>
+        <div class="col-md-4">{item.mobilenum}</div>
+      
+        
+        
+      </div>
+    )
+ 
+  })
 
       return(
         <div>
@@ -143,17 +144,22 @@ class Dikhao extends React.Component {
             {custmanage}
             <h2>Total amount: {Total}   Order count : {frequency}</h2>
          
-           <h1>Item Profile</h1>  
+           <h1>Order Profile</h1>  
            <div class='row'>
-           <div class="col-md-2">Name</div>
-           <div class="col-md-1">quantity</div>
-           <div class="col-md-1">Total selling price</div>
-           <div class="col-md-1">Total costing  price</div>
-           <div class="col-md-1">weight</div>
-           <div class="col-md-1">margin</div>
-
+           <div class="col-md-3">Name</div>
+           <div class="col-md-6">Date</div>
+           <div class="col-md-3">Total selling price</div>
            </div> 
           {itemmanage}
+          <h2>{margin}</h2>
+
+          <h1>Customer Profile</h1>  
+           <div class='row'>
+           <div class="col-md-3">Name</div>
+           <div class="col-md-6">mobilenum</div>
+          
+           </div> 
+          {custdetail}
           <h2>{margin}</h2>
         </div>
       )
@@ -230,3 +236,20 @@ constructor(props){
   }
 }
 export default Dayreport;
+
+
+
+
+
+
+ /*this.state.delivery.filter(item=>item.date[4]==this.props.time[0]&&item.date[5]==this.props.time[1]&&item.date[6]==this.props.time[2]).map((dev)=>{
+        dev.item.map(spitem=>{
+          if(spitem.itemid==item.itemid&&spitem.brand==item.brand)
+          {
+             quantity+=+spitem.quantity;
+             cost+=+(spitem.cost*spitem.quantity);
+             cp+=+(spitem.cp*spitem.quantity)
+             margin=margin+(cost-cp)
+          }
+        })
+   })*/
