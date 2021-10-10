@@ -103,7 +103,7 @@ class Dikhao extends React.Component {
     
      return(
        <div class='row'>
-        <div class="col-md-3">{item.username}</div>
+        <div class="col-md-3">{item.fullname}</div>
          <div class="col-md-6">{item.date}</div>
          <div class="col-md-3">{item.price}</div>
          
