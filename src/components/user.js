@@ -24,7 +24,7 @@ const User = () => {
     }
 
     const updateClick = (values) => {
-        fetch(baseUrl+'/users/urstar',{
+        fetch(baseUrl+'/delivery/display',{
             method:"PUT",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify({  username:values.updateusername})

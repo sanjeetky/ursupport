@@ -36,18 +36,14 @@ handleSubmit({values,item}) {
       
     var obj={
       description: values.description,
-      img: values.img1,
-      cost:values.cost1,
-      weight:values.weight1,
+      img: values.img,
+      cost:values.cost,
+      weight:values.weight,
       status:values.status,
       state:values.state,
       brand:values.brand,
       itemid:item.itemid,
       cp:values.cp,
-      picker:[
-        {img:values.img1,weight:values.weight1,cost:values.cost1},
-        {img:values.img2,weight:values.weight2,cost:values.cost2},
-   ]
     }
     console.log(obj)
 
@@ -161,20 +157,20 @@ delete(data)
                          
 
 
-                          <h3>Picker1</h3>
+                         
 
 <Row className="form-group">   
-<Label htmlFor="cost1">cost1</Label>
-         <Control.text model=".cost1" id="cost1" name="cost1"
+<Label htmlFor="cost">cost</Label>
+         <Control.text model=".cost" id="cost" name="cost"
               className="form-control"
               validators={{
                  required, minLength: minLength(1)
              }}
-             defaultValue={item.picker[0].cost}
+             defaultValue={item.cost}
              />
               <Errors
              className="text-danger"
-             model="cost1"
+             model="cost"
              show="touched"
              messages={{
                  required: 'Required',
@@ -184,17 +180,17 @@ delete(data)
 
 </Row>
 <Row className="form-group">   
-<Label htmlFor="weight1">weight1</Label>
-         <Control.text model=".weight1" id="weight1" name="weight1"
+<Label htmlFor="weight">weight</Label>
+         <Control.text model=".weight" id="weight" name="weight"
               className="form-control"
               validators={{
                  required, minLength: minLength(1)
              }}
-             defaultValue={item.picker[0].weight}
+             defaultValue={item.weight}
              />
               <Errors
              className="text-danger"
-             model="weight1"
+             model="weight"
              show="touched"
              messages={{
                  required: 'Required',
@@ -204,17 +200,17 @@ delete(data)
 
 </Row>
 <Row className="form-group">   
-<Label htmlFor="img1">img1</Label>
-         <Control.text model=".img1" id="img1" name="img1"
+<Label htmlFor="img">img</Label>
+         <Control.text model=".img" id="img" name="img"
               className="form-control"
               validators={{
                  required, minLength: minLength(1)
              }}
-             defaultValue={item.picker[0].img}
+             defaultValue={item.img}
              />
               <Errors
              className="text-danger"
-             model="img1"
+             model="img"
              show="touched"
              messages={{
                  required: 'Required',
@@ -223,74 +219,10 @@ delete(data)
           />
 
 </Row>
-
-<h3>Picker2</h3>
-
-<Row className="form-group">   
-<Label htmlFor="cost2">cost2</Label>
-         <Control.text model=".cost2" id="cost2" name="cost2"
-              className="form-control"
-              validators={{
-                 required, minLength: minLength(1)
-             }}
-             defaultValue={item.picker[1].cost}
-             />
-              <Errors
-             className="text-danger"
-             model="cost2"
-             show="touched"
-             messages={{
-                 required: 'Required',
-                 minLength: 'Must be greater than 1 characters'                        
-             }}
-          />
-
-</Row>
-
-
-<Row className="form-group">   
-<Label htmlFor="weight2">weight2</Label>
-         <Control.text model=".weight2" id="weight2" name="weight2"
-              className="form-control"
-              validators={{
-                 required, minLength: minLength(1)
-             }}
-             defaultValue={item.picker[1].weight}
-             />
-              <Errors
-             className="text-danger"
-             model="weight2"
-             show="touched"
-             messages={{
-                 required: 'Required',
-                 minLength: 'Must be greater than 1 characters'                        
-             }}
-          />
-
-</Row>
+  
 
 
 
-<Row className="form-group">   
-<Label htmlFor="img2">img2</Label>
-         <Control.text model=".img2" id="img2" name="img2"
-              className="form-control"
-              validators={{
-                 required, minLength: minLength(1)
-             }}
-             defaultValue={item.picker[1].img}
-             />
-              <Errors
-             className="text-danger"
-             model="img2"
-             show="touched"
-             messages={{
-                 required: 'Required',
-                 minLength: 'Must be greater than 1 characters'                        
-             }}
-          />
-
-</Row>
 
 <Row className="form-group" >
                                 <Label htmlFor="state" >State </Label>

@@ -15,7 +15,8 @@ class Insert extends Component {
         super();
 
         this.state = {
-            order:[]
+            cat:[{cat:"vegetable"}],
+            cities:[{city:'Ara'}]
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);  
@@ -26,68 +27,48 @@ class Insert extends Component {
         alert("hello")
     }
 
+    componentDidMount()
+    {
+        fetch(baseUrl+'/distributor')
+        .then(response => response.json())
+        .then(dishes => {
+          this.setState({cat:dishes})
+        })
+        .catch(err=>console.log(err))
+
+        fetch(baseUrl+'/cities')
+        .then(response => response.json())
+        .then(dishes => {
+          this.setState({cities:dishes})
+          //alert(JSON.stringify(dishes));
+        })
+        .catch(err=>console.log(err))
+    }
+
     handleSubmit(values) {
        
-      
-         
-         
-if(values.btype=="business")
-{
-    var obj1={
+    var obj={
         name:values.name,
         description: values.description,
-        itemid:"restro"+ values.category+values.name+values.brand,
-        img: values.img1,
+        itemid: values.category+values.name+values.city,
+        img: values.img,
         brand:values.character,
-        cost:values.cost1,
-        weight:values.weight1,
+        cost:values.cost,
+        weight:values.weight,
         quantity:"1",
         category:values.category,
         cp:values.cp,
-        picker:[
-             {img:values.img1,weight:values.weight1,cost:values.cost1},
-             {img:values.img2,weight:values.weight2,cost:values.cost2},
-        ]
+        city:values.city
       }
-    fetch( baseUrl+'/restroitems',{
+   fetch( baseUrl+'/items',{
         method:"POST",
         headers:{ "Content-Type":"application/json"},
-        body:JSON.stringify(obj1)
+        body:JSON.stringify(obj)
       
     })
     .then(data=>data.json())
     .then(data=>alert(data.status))
     .catch(err=>console.log(err))
-}
-else
-{
-    var obj2={
-        name:values.name,
-        description: values.description,
-        itemid: values.category+values.name+values.brand,
-        img: values.img1,
-        brand:values.character,
-        cost:values.cost1,
-        weight:values.weight1,
-        quantity:"1",
-        category:values.category,
-        cp:values.cp,
-        picker:[
-             {img:values.img1,weight:values.weight1,cost:values.cost1},
-             {img:values.img2,weight:values.weight2,cost:values.cost2},
-        ]
-      }
-    fetch( baseUrl+'/items',{
-        method:"POST",
-        headers:{ "Content-Type":"application/json"},
-        body:JSON.stringify(obj2)
-      
-    })
-    .then(data=>data.json())
-    .then(data=>alert(data.status))
-    .catch(err=>console.log(err))
-}
-        
 };
 
     render() {
@@ -234,11 +215,11 @@ else
 </Row>
 
 
-<h3>Picker1</h3>
+
 
 <Row className="form-group">   
-<Label htmlFor="cost1">cost1</Label>
-         <Control.text model=".cost1" id="cost1" name="cost1"
+<Label htmlFor="cost1">cost</Label>
+         <Control.text model=".cost" id="cost" name="cost"
               className="form-control"
               validators={{
                  required, minLength: minLength(1)
@@ -246,7 +227,7 @@ else
              />
               <Errors
              className="text-danger"
-             model="cost1"
+             model="cost"
              show="touched"
              messages={{
                  required: 'Required',
@@ -256,8 +237,8 @@ else
 
 </Row>
 <Row className="form-group">   
-<Label htmlFor="weight1">weight1</Label>
-         <Control.text model=".weight1" id="weight1" name="weight1"
+<Label htmlFor="weight1">weight</Label>
+         <Control.text model=".weight" id="weight" name="weight"
               className="form-control"
               validators={{
                  required, minLength: minLength(1)
@@ -265,7 +246,7 @@ else
              />
               <Errors
              className="text-danger"
-             model="weight1"
+             model="weight"
              show="touched"
              messages={{
                  required: 'Required',
@@ -275,8 +256,8 @@ else
 
 </Row>
 <Row className="form-group">   
-<Label htmlFor="img1">img1</Label>
-         <Control.text model=".img1" id="img1" name="img1"
+<Label htmlFor="img">img</Label>
+         <Control.text model=".img" id="img" name="img"
               className="form-control"
               validators={{
                  required, minLength: minLength(1)
@@ -284,7 +265,7 @@ else
              />
               <Errors
              className="text-danger"
-             model="img1"
+             model="img"
              show="touched"
              messages={{
                  required: 'Required',
@@ -293,80 +274,6 @@ else
           />
 
 </Row>
-
-<h3>Picker2</h3>
-
-<Row className="form-group">   
-<Label htmlFor="cost2">cost2</Label>
-         <Control.text model=".cost2" id="cost2" name="cost2"
-              className="form-control"
-              validators={{
-                 required, minLength: minLength(1)
-             }}
-             />
-              <Errors
-             className="text-danger"
-             model="cost2"
-             show="touched"
-             messages={{
-                 required: 'Required',
-                 minLength: 'Must be greater than 1 characters'                        
-             }}
-          />
-
-</Row>
-
-
-<Row className="form-group">   
-<Label htmlFor="weight2">weight2</Label>
-         <Control.text model=".weight2" id="weight2" name="weight2"
-              className="form-control"
-              validators={{
-                 required, minLength: minLength(1)
-             }}
-             />
-              <Errors
-             className="text-danger"
-             model="weight2"
-             show="touched"
-             messages={{
-                 required: 'Required',
-                 minLength: 'Must be greater than 1 characters'                        
-             }}
-          />
-
-</Row>
-
-
-
-<Row className="form-group">   
-<Label htmlFor="img2">img2</Label>
-         <Control.text model=".img2" id="img2" name="img2"
-              className="form-control"
-              validators={{
-                 required, minLength: minLength(1)
-             }}
-             />
-              <Errors
-             className="text-danger"
-             model="img2"
-             show="touched"
-             messages={{
-                 required: 'Required',
-                 minLength: 'Must be greater than 1 characters'                        
-             }}
-          />
-
-</Row>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -375,26 +282,27 @@ else
                                     <Control.select model=".category" id="category" name="category"
                                         placeholder="category"
                                         className="form-control"  
-                                        defaultValue="vegetable"
+                                        defaultValue={this.state.cat[0].cat}
                                         > 
-                                         <option value="vegetable">vegetable</option>
-                                         <option value="milkproduct">milkproduct</option>
-                                         <option value="fruit">fruit</option>
-                                         <option value="festival">festival</option>
-                                         <option value="potato">Potato</option>
-                                         <option value="onion">Onion</option>
+                                         {this.state.cat.map((item, index) => {
+                   return (<option label={item.cat} value={item.cat} key={index}>{item.cat}</option>) 
+                   })}
                                         </Control.select>
                            </Row>
+
+
                          
                            <Row className="form-group" >
-                                <Label htmlFor="btype" >Business type </Label>
-                                    <Control.select model=".btype" id="btype" name="btype"
-                                        placeholder="btype"
+                                <Label htmlFor="btype" >city </Label>
+                                    <Control.select model=".city" id="city" name="city"
+                                        placeholder="city"
                                         className="form-control"  
-                                        defaultValue="customer"
+                                        defaultValue={this.state.cities[0].city}
                                         > 
-                                         <option value="customer">customer</option>
-                                         <option value="business">business</option>
+                
+                                         {this.state.cities.map((item, index) => {
+                   return (<option label={item.city} value={item.city} key={index}>{item.city}</option>) 
+                   })}
                                         </Control.select>
                            </Row>
                          

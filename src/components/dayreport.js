@@ -15,7 +15,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
 let Total=0;
 let frequency=0;
 let margin=0;
-
+let quantity=0;
 
 class Dikhao extends React.Component {
     constructor(props){
@@ -66,7 +66,8 @@ class Dikhao extends React.Component {
     render () {
         Total=0;
         frequency=0;
-   margin=0;
+       margin=0;
+       quantity=0;
         const custmanage=this.state.cust.map((item)=>{
      
             let totalvalue=0;
@@ -96,44 +97,60 @@ class Dikhao extends React.Component {
            };
    })
    
-   const itemmanage=this.state.delivery.map((item)=>{
-        
+   const itemmanage=this.state.item.map(item=>{
+quantity=0;
+  
+   this.state.delivery.filter(item=>item.date[4]==this.props.time[0]&&item.date[5]==this.props.time[1]&&item.date[6]==this.props.time[2]).map((dev)=>{
+      dev.item.map(spitem=>{
+      
+        if(spitem.name===item.name&&spitem.weight==item.weight)
+        {
+          
+           quantity+=+spitem.quantity;
+          // cost+=+(spitem.cost*spitem.quantity);
+          // cp+=+(spitem.cp*spitem.quantity)
+          // margin=margin+(cost-cp)
+          
+        }
+      })
+    })
+     return(
+      <div class='row'>
+       <div class="col-md-3">{item.name}</div>
+       <div class="col-md-3">{item.weight}</div>
+
+        <div class="col-md-3">{quantity}</div>
+      </div>
+    )
+
+
+})
      
  
     
-     return(
-       <div class='row'>
-        <div class="col-md-3">{item.fullname}</div>
-         <div class="col-md-6">{item.date}</div>
-         <div class="col-md-3">{item.price}</div>
-         
-         
-       </div>
-     )
   
-   })
+  
 
 
    const custdetail=this.state.cust.map((item)=>{
-        
-     
- 
-    
-    return(
-      <div class='row'>
-       <div class="col-md-4">{item.username}</div>
-        <div class="col-md-4">{item.mobilenum}</div>
+        const arr=[];
+    this.state.delivery.map((tem)=>{
+         if(item.username==tem.username)
+         {
+           arr.push(tem.date)
+         }
+    })
       
-        
-        
-      </div>
-    )
- 
+         return(
+          <div class='row'>
+          <div class="col-md-4">{item.username}</div>
+         </div>
+         )
   })
 
       return(
         <div>
-         <h1>User Profile</h1> 
+        <h1>User Profile</h1> 
             <div class='row'>
             <div class="col-md-2">username</div>
             <div class="col-md-1">amount</div>
@@ -153,14 +170,7 @@ class Dikhao extends React.Component {
           {itemmanage}
           <h2>{margin}</h2>
 
-          <h1>Customer Profile</h1>  
-           <div class='row'>
-           <div class="col-md-3">Name</div>
-           <div class="col-md-6">mobilenum</div>
           
-           </div> 
-          {custdetail}
-          <h2>{margin}</h2>
         </div>
       )
     }
@@ -252,4 +262,26 @@ export default Dayreport;
              margin=margin+(cost-cp)
           }
         })
-   })*/
+   })*//*
+
+    <h1>User Profile</h1> 
+            <div class='row'>
+            <div class="col-md-2">username</div>
+            <div class="col-md-1">amount</div>
+            <div class="col-md-1">freq</div>
+            <div class="col-md-1">mobile</div>
+            <p>address</p>
+            </div>    
+            {custmanage}
+            <h2>Total amount: {Total}   Order count : {frequency}</h2>
+         
+           <h1>Order Profile</h1>  
+           <div class='row'>
+           <div class="col-md-3">Name</div>
+           <div class="col-md-6">Date</div>
+           <div class="col-md-3">Total selling price</div>
+           </div> 
+          {itemmanage}
+          <h2>{margin}</h2>
+
+          */
