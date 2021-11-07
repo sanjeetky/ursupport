@@ -133,17 +133,14 @@ quantity=0;
 
 
    const custdetail=this.state.cust.map((item)=>{
-        const arr=[];
-    this.state.delivery.map((tem)=>{
-         if(item.username==tem.username)
-         {
-           arr.push(tem.date)
-         }
-    })
+       
       
          return(
           <div class='row'>
           <div class="col-md-4">{item.username}</div>
+          <div class="col-md-4">{item.mobilenum}</div>
+          <div class="col-md-4">{item.createdAt}</div>
+
          </div>
          )
   })
@@ -168,6 +165,7 @@ quantity=0;
            <div class="col-md-3">Total selling price</div>
            </div> 
           {itemmanage}
+          {custdetail}
           <h2>{margin}</h2>
 
           
