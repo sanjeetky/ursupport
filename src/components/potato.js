@@ -71,7 +71,7 @@ delete(data)
 }
   render() {
 
-    const items=this.state.item.filter((item)=>item.category=="potato").map((item)=>{
+    const items=this.state.item.filter((item)=>item.category=="potato"&& item.city=="Ara").map((item)=>{
 
   
         return(

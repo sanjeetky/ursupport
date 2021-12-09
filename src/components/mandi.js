@@ -75,7 +75,7 @@ delete(data)
 }
   render() {
 
-    const items=this.state.item.filter((item)=>item.category=="festival").map((item)=>{
+    const items=this.state.item.filter((item)=>item.category=="festival"&&item.city=="Ara").map((item)=>{
 
   
         return(

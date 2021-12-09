@@ -58,7 +58,7 @@ class Insert extends Component {
         quantity:"1",
         category:values.category,
         cp:values.cp,
-        city:values.city
+        city:"Ara"
       }
    fetch( baseUrl+'/items',{
         method:"POST",
@@ -284,7 +284,7 @@ class Insert extends Component {
                                         className="form-control"  
                                         defaultValue={this.state.cat[0].cat}
                                         > 
-                                         {this.state.cat.map((item, index) => {
+                                         {this.state.cat.filter((item)=> item.city=="Ara").map((item, index) => {
                    return (<option label={item.cat} value={item.cat} key={index}>{item.cat}</option>) 
                    })}
                                         </Control.select>
@@ -292,19 +292,7 @@ class Insert extends Component {
 
 
                          
-                           <Row className="form-group" >
-                                <Label htmlFor="btype" >city </Label>
-                                    <Control.select model=".city" id="city" name="city"
-                                        placeholder="city"
-                                        className="form-control"  
-                                        defaultValue={this.state.cities[0].city}
-                                        > 
-                
-                                         {this.state.cities.map((item, index) => {
-                   return (<option label={item.city} value={item.city} key={index}>{item.city}</option>) 
-                   })}
-                                        </Control.select>
-                           </Row>
+                          
                          
                             
                             <Row className="form-group">

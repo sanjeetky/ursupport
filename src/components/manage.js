@@ -87,7 +87,7 @@ componentDidMount()
         };
 })
 
-const itemmanage=this.state.item.map((item)=>{
+const itemmanage=this.state.item.filter((item)=> item.city=="Ara").map((item)=>{
      
   let quantity=0;
   let cost=0;

@@ -97,7 +97,7 @@ class Dikhao extends React.Component {
            };
    })
    
-   const itemmanage=this.state.item.map(item=>{
+   const itemmanage=this.state.item.filter((item)=> item.city=="Ara").map(item=>{
 quantity=0;
   
    this.state.delivery.filter(item=>item.date[4]==this.props.time[0]&&item.date[5]==this.props.time[1]&&item.date[6]==this.props.time[2]).map((dev)=>{

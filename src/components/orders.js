@@ -31,7 +31,7 @@ componentDidMount()
 
 
   render() {
-      const items=this.state.item.map((data)=>{
+      const items=this.state.item.filter((item)=> item.city=="Ara").map((data)=>{
        
                 return(
                   <div style={{marginBottom:30}}>
