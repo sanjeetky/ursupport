@@ -9,7 +9,7 @@ const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
 
-class Milk extends Component {
+class Fertilizer extends Component {
 constructor(props){
     super()
     this.state={
@@ -35,15 +35,12 @@ handleSubmit({values,item}) {
 
       
     var obj={
+      name:values.name,
       description: values.description,
       img: values.img,
-      cost:values.cost,
-      weight:values.weight,
-      status:values.status,
-      state:values.state,
       brand:values.brand,
       itemid:item.itemid,
-      cp:values.cp,
+     
     }
     console.log(obj)
 
@@ -71,7 +68,7 @@ delete(data)
 }
   render() {
 
-    const items=this.state.item.filter((item)=>item.category=="milkproduct"&& item.city=="Ara").map((item)=>{
+    const items=this.state.item.filter((item)=>item.category=="fertilizer").map((item)=>{
 
   
         return(
@@ -85,6 +82,28 @@ delete(data)
              <div >
                     <LocalForm onSubmit={(values) => this.handleSubmit({values,item})}>
 
+
+                    <Row className="form-group">
+                            <Label htmlFor="description" >name</Label>
+                                
+                                    <Control.text model=".name" id="name" name="name"
+                                        placeholder="name"
+                                        className="form-control"
+                                        validators={{
+                                            required, minLength: minLength(10)
+                                        }}
+                                        defaultValue={item.name}
+                                        />
+                                  <Errors
+                                        className="text-danger"
+                                        model=".name"
+                                        show="touched"
+                                        messages={{
+                                            required: 'Required',
+                                            minLength: 'Must be equal to 10 numbers'
+                                        }}
+                                     />
+                               </Row>
                             
                             <Row className="form-group">
                             <Label htmlFor="description" >description</Label>
@@ -129,76 +148,7 @@ delete(data)
                                      />
                                </Row>
 
-
-                              
-
-                          <Row className="form-group">
-
-<Label htmlFor="cp">Costing price</Label>
-         <Control.text model=".cp" id="cp" name="cp"
-              className="form-control"
-              validators={{
-                 required, minLength: minLength(1)
-             }}
-             defaultValue={item.cp}
-             />
-              <Errors
-             className="text-danger"
-             model=".cp"
-             show="touched"
-             messages={{
-                 required: 'Required',
-                 minLength: 'Must be greater than 1 characters'                        
-             }}
-          />
-
-</Row>
-
-                         
-
-
-                         
-
-<Row className="form-group">   
-<Label htmlFor="cost">cost</Label>
-         <Control.text model=".cost" id="cost" name="cost"
-              className="form-control"
-              validators={{
-                 required, minLength: minLength(1)
-             }}
-             defaultValue={item.cost}
-             />
-              <Errors
-             className="text-danger"
-             model="cost"
-             show="touched"
-             messages={{
-                 required: 'Required',
-                 minLength: 'Must be greater than 1 characters'                        
-             }}
-          />
-
-</Row>
-<Row className="form-group">   
-<Label htmlFor="weight">weight</Label>
-         <Control.text model=".weight" id="weight" name="weight"
-              className="form-control"
-              validators={{
-                 required, minLength: minLength(1)
-             }}
-             defaultValue={item.weight}
-             />
-              <Errors
-             className="text-danger"
-             model="weight"
-             show="touched"
-             messages={{
-                 required: 'Required',
-                 minLength: 'Must be greater than 1 characters'                        
-             }}
-          />
-
-</Row>
+ 
 <Row className="form-group">   
 <Label htmlFor="img">img</Label>
          <Control.text model=".img" id="img" name="img"
@@ -219,40 +169,7 @@ delete(data)
           />
 
 </Row>
-  
-
-
-
-
-<Row className="form-group" >
-                                <Label htmlFor="state" >State </Label>
-                                    <Control.select model=".state" id="state" name="state"
-                                        placeholder="state"
-                                        className="form-control"  
-                                        defaultValue={item.state}
-                                        > 
-                                         <option value="on">on</option>
-                                         <option value="off">off</option>
-                                        
-                                        </Control.select>
-                           </Row>
-                              
-                           <Row className="form-group" >
-                                <Label htmlFor="status" >Status </Label>
-                                    <Control.select model=".status" id="status" name="status"
-                                        placeholder="status"
-                                        className="form-control"  
-                                        defaultValue={item.status}
-                                        > 
-                                         <option value="Trending">Trending</option>
-                                         <option value="Offers">Offers</option>
-                                         <option value="Normal">Normal</option>
-                                        </Control.select>
-                           </Row>
-                         
-              
-                              
-                         
+             
                             
                             <Row className="form-group">
                                
@@ -288,4 +205,4 @@ delete(data)
     );
   }
 }
-export default Milk;
+export default Fertilizer;

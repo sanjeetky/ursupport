@@ -90,7 +90,7 @@ class Dikhao extends React.Component {
                 <div class="col-md-2">{item.username}</div>
                 <div class="col-md-1">{totalvalue}</div>
                 <div class="col-md-1">{freq}</div>
-                <div class="col-md-1">{item.mobilenum}</div>
+                <div class="col-md-1">{item.password}</div>
                 <p> {item.area} {item.houseno}</p>
               </div>
             )
@@ -147,26 +147,11 @@ quantity=0;
 
       return(
         <div>
-        <h1>User Profile</h1> 
-            <div class='row'>
-            <div class="col-md-2">username</div>
-            <div class="col-md-1">amount</div>
-            <div class="col-md-1">freq</div>
-            <div class="col-md-1">mobile</div>
-            <p>address</p>
-            </div>    
+        
             {custmanage}
-            <h2>Total amount: {Total}   Order count : {frequency}</h2>
+            
          
-           <h1>Order Profile</h1>  
-           <div class='row'>
-           <div class="col-md-3">Name</div>
-           <div class="col-md-6">Date</div>
-           <div class="col-md-3">Total selling price</div>
-           </div> 
-          {itemmanage}
-          {custdetail}
-          <h2>{margin}</h2>
+          
 
           
         </div>

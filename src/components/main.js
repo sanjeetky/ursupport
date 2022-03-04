@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import Insert from './insert.js';
-import Vegetable from './vegetable.js';
-import Fruit from './fruit.js';
-import Milk from './milk.js';
-import Mandi from './mandi.js';
+import Seed from './seed.js';
+import Fertilizer from './fertilizer';
+import Insecticide from './insecticide';
+import Equipment from './equipment.js';
 import Orders from './orders.js';
 import Manage from './manage.js';
-import Onion from './onion.js';
-import Potato from './potato.js';
 import Dayreport from './dayreport';
-import Deliveryman from './deliveryman.js';
-import {baseUrl} from '../baseUrl';
 import User from './user';
+
+import {baseUrl} from '../baseUrl';
 
 
 
@@ -46,60 +44,39 @@ componentDidMount()
             );
           };
         
-          const DeliverymanPage = () => {
-            return(
-                <Deliveryman  />
-            );
-          };
-
+         
 
          
-          const VegPage = () => {
+          const SeedPage = () => {
             return(
-                <Vegetable  />
+                <Seed />
             );
           };
 
          
          
-          const  MilkPage = () => {
+          const  FertilizerPage = () => {
             return(
-                <Milk  />
+                <Fertilizer  />
             );
           };
 
 
-          const FruitPage = () => {
+          const InsecticidePage = () => {
             return(
-                <Fruit />
+                <Insecticide />
             );
           };
          
 
 
          
-          const MandiPage = () => {
+          const EquipmentPage = () => {
             return(
-                <Mandi />
+                <Equipment />
             );
           };
         
-
-        
-          const PotatoPage = () => {
-            return(
-                <Potato />
-            );
-          };
-          const OnionPage = () => {
-            return(
-                <Onion />
-            );
-          };
-
-
-
-
           
           const DeliveryPage = () => {
             return(
@@ -140,23 +117,13 @@ componentDidMount()
                  <Switch>
                  <Route exact path='/admin' component={UserPage} />
                    <Route exact path='/helloinsert' component={InsertPage} />
-                   <Route exact path='/hellovegetable' component={VegPage} />
-                   <Route exact path='/hellomilkproduct' component={MilkPage} />
-                   <Route exact path='/hellomandi' component={MandiPage} />
-                   <Route exact path='/hellofruit' component={FruitPage} />
+                   <Route exact path='/helloseed' component={SeedPage} />
+                   <Route exact path='/hellofertilizer' component={FertilizerPage} />
+                   <Route exact path='/helloinsecticide' component={InsecticidePage} />
+                   <Route exact path='/helloequipment' component={EquipmentPage} />
                    <Route exact path='/helloorders' component={OrdersPage} />
-                   <Route exact path='/hellopotato' component={PotatoPage} />
-                   <Route exact path='/helloonion' component={OnionPage} />
-
-
-                  
 
                    <Route exact path='/hellodayreport' component={DayreportPage} />
-
-                
-
-
-                   <Route exact path='/deliveryman' component={DeliverymanPage} />
                    <Route exact path='/hellodelivery' component={DeliveryPage} />
                    <Route exact path='/hellomanagement' component={ManagementPage} />
                    

@@ -15,12 +15,12 @@ class Insert extends Component {
         super();
 
         this.state = {
-            cat:[{cat:"vegetable"}],
-            cities:[{city:'Ara'}]
+            cat:[{cat:"seed"}],
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);  
         this.manage=this.manage.bind(this);
+        this.handleshop=this.handleshop.bind(this);
     }
     manage()
     {
@@ -36,13 +36,6 @@ class Insert extends Component {
         })
         .catch(err=>console.log(err))
 
-        fetch(baseUrl+'/cities')
-        .then(response => response.json())
-        .then(dishes => {
-          this.setState({cities:dishes})
-          //alert(JSON.stringify(dishes));
-        })
-        .catch(err=>console.log(err))
     }
 
     handleSubmit(values) {
@@ -53,12 +46,7 @@ class Insert extends Component {
         itemid: values.category+values.name+values.city,
         img: values.img,
         brand:values.character,
-        cost:values.cost,
-        weight:values.weight,
-        quantity:"1",
-        category:values.category,
-        cp:values.cp,
-        city:"Ara"
+        cat:values.category
       }
    fetch( baseUrl+'/items',{
         method:"POST",
@@ -71,6 +59,28 @@ class Insert extends Component {
     .catch(err=>console.log(err))
 };
 
+
+handleshop(values) {
+       
+    var object={
+        name:values.name,
+        address: values.address,
+        mobile: values.mobile,
+        latitude: values.latitude,
+        longitude:values.longitude,
+      }
+   fetch( baseUrl+'/centre',{
+        method:"POST",
+        headers:{ "Content-Type":"application/json"},
+        body:JSON.stringify(object)
+    })
+    .then(data=>data.json())
+    .then(data=>alert(data.status))
+    .catch(err=>console.log(err))
+    
+};
+
+
     render() {
         return(
             <div className="container">
@@ -79,27 +89,21 @@ class Insert extends Component {
                       <h3>Customer</h3>
                      
                    
-                      <Link to={`/hellovegetable`} >
-                      <Button  style={{margin:20}}> Vegetable</Button>
+                      <Link to={`/helloseed`} >
+                      <Button  style={{margin:20}}> Seed</Button>
                       </Link>
-                      <Link to={`/hellofruit`} >
-                        <Button style={{margin:20}} >Fruit</Button>
+                      <Link to={`/hellofertilizer`} >
+                        <Button style={{margin:20}} >Fertilizer</Button>
                       </Link>
                      
-                      <Link to={`/hellomandi`} >
-                        <Button style={{margin:20}} >Festival</Button>
+                      <Link to={`/helloinsecticide`} >
+                        <Button style={{margin:20}} >Insecticide</Button>
                       </Link>
-                     <Link to={`/hellomilkproduct`} >
-                        <Button style={{margin:20}} >Milk Product</Button>
+                     <Link to={`/helloequipment`} >
+                        <Button style={{margin:20}} >Equipment</Button>
                     </Link>
 
-                    <Link to={`/hellopotato`} >
-                        <Button style={{margin:20}} >Potato</Button>
-                    </Link>
                    
-                    <Link to={`/helloonion`} >
-                        <Button style={{margin:20}} >Onion</Button>
-                    </Link>
                    
                     <Link to={`/helloorders`} >
                         <Button style={{margin:20}} >Orders</Button>
@@ -188,73 +192,7 @@ class Insert extends Component {
                                      />
                                </Row>
 
-                           
-
-                          
-
-
-                          <Row className="form-group">
-
-<Label htmlFor="cp">buying price</Label>
-         <Control.text model=".cp" id="cp" name="cp"
-              className="form-control"
-              validators={{
-                 required, minLength: minLength(1)
-             }}
-             />
-              <Errors
-             className="text-danger"
-             model=".cp"
-             show="touched"
-             messages={{
-                 required: 'Required',
-                 minLength: 'Must be greater than 1 characters'                        
-             }}
-          />
-
-</Row>
-
-
-
-
-<Row className="form-group">   
-<Label htmlFor="cost1">cost</Label>
-         <Control.text model=".cost" id="cost" name="cost"
-              className="form-control"
-              validators={{
-                 required, minLength: minLength(1)
-             }}
-             />
-              <Errors
-             className="text-danger"
-             model="cost"
-             show="touched"
-             messages={{
-                 required: 'Required',
-                 minLength: 'Must be greater than 1 characters'                        
-             }}
-          />
-
-</Row>
-<Row className="form-group">   
-<Label htmlFor="weight1">weight</Label>
-         <Control.text model=".weight" id="weight" name="weight"
-              className="form-control"
-              validators={{
-                 required, minLength: minLength(1)
-             }}
-             />
-              <Errors
-             className="text-danger"
-             model="weight"
-             show="touched"
-             messages={{
-                 required: 'Required',
-                 minLength: 'Must be greater than 1 characters'                        
-             }}
-          />
-
-</Row>
+    
 <Row className="form-group">   
 <Label htmlFor="img">img</Label>
          <Control.text model=".img" id="img" name="img"
@@ -284,7 +222,7 @@ class Insert extends Component {
                                         className="form-control"  
                                         defaultValue={this.state.cat[0].cat}
                                         > 
-                                         {this.state.cat.filter((item)=> item.city=="Ara").map((item, index) => {
+                                         {this.state.cat.map((item, index) => {
                    return (<option label={item.cat} value={item.cat} key={index}>{item.cat}</option>) 
                    })}
                                         </Control.select>
@@ -295,6 +233,129 @@ class Insert extends Component {
                           
                          
                             
+                            <Row className="form-group">
+                               
+                                    <Button type="submit" color="primary">
+                                        Add
+                                    </Button>
+                             
+                                    </Row>
+                        </LocalForm>
+
+                    </div>
+
+                    <div>
+
+                        <text style={{margin:50,alignSelf:'center',fontSize:30}}>Shop Addition</text>
+                    
+                    <LocalForm onSubmit={(values) => this.handleshop(values)}>
+                            <Row className="form-group">
+                                <Label htmlFor="name"> Name</Label>
+                                
+                                    <Control.text model=".name" id="name" name="name"
+                                        placeholder="Name"
+                                        className="form-control"
+                                        validators={{
+                                            required, minLength: minLength(2), maxLength: maxLength(18)
+                                        }}
+                                        />
+                                        <Errors
+                                        className="text-danger"
+                                        model=".name"
+                                        show="touched"
+                                        messages={{
+                                            required: 'Required',
+                                            minLength: 'Must be greater than 1 characters',
+                                            maxLength: 'Must be 18 characters or less'
+                                        }}
+                                     />
+                               </Row>
+                            
+                            <Row className="form-group">
+                            <Label htmlFor="address" >address</Label>
+                                
+                                    <Control.text model=".address" id="address" name="address"
+                                        placeholder="address"
+                                        className="form-control"
+                                        validators={{
+                                            required
+                                        }}
+                                        />
+                                  <Errors
+                                        className="text-danger"
+                                        model=".address"
+                                        show="touched"
+                                        messages={{
+                                            required: 'Required',
+                                            minLength: 'Must be equal to 10 numbers'
+                                        }}
+                                     />
+                               </Row>
+
+                                 
+                            <Row className="form-group">
+                            <Label htmlFor="mobile" >mobile</Label>
+                                
+                                    <Control.text model=".mobile" id="mobile" name="mobile"
+                                        placeholder="size:small"
+                                        className="form-control"
+                                        validators={{
+                                            required, minLength: minLength(5)
+                                        }}
+                                        />
+                                  <Errors
+                                        className="text-danger"
+                                        model=".mobile"
+                                        show="touched"
+                                        messages={{
+                                            required: 'Required',
+                                            minLength: 'Must be equal to 5 numbers'
+                                        }}
+                                     />
+                               </Row>
+
+    
+<Row className="form-group">   
+<Label htmlFor="latitude">Latitude</Label>
+         <Control.text model=".latitude" id="latitude" name="latitude"
+              className="form-control"
+              validators={{
+                 required, minLength: minLength(1)
+             }}
+             />
+              <Errors
+             className="text-danger"
+             model="latitude"
+             show="touched"
+             messages={{
+                 required: 'Required',
+                 minLength: 'Must be greater than 1 characters'                        
+             }}
+          />
+
+</Row>
+
+<Row className="form-group">   
+<Label htmlFor="longitude">Longitude</Label>
+         <Control.text model=".longitude" id="longitude" name="longitude"
+              className="form-control"
+              validators={{
+                 required, minLength: minLength(1)
+             }}
+             />
+              <Errors
+             className="text-danger"
+             model="longitude"
+             show="touched"
+             messages={{
+                 required: 'Required',
+                 minLength: 'Must be greater than 1 characters'                        
+             }}
+          />
+
+</Row>
+
+        
                             <Row className="form-group">
                                
                                     <Button type="submit" color="primary">
