@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import { Breadcrumb, BreadcrumbItem,
-    Button, Row, Col, Label } from 'reactstrap';
+    Button, Row, Col, Label,Alert } from 'reactstrap';
     import { Link } from 'react-router-dom';
 
     import {baseUrl} from '../baseUrl';
@@ -9,6 +9,8 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
+var latitude="";
+var longitude="";
 
 class Insert extends Component {
     constructor(props) {
@@ -16,11 +18,15 @@ class Insert extends Component {
 
         this.state = {
             cat:[{cat:"seed"}],
+            latitude:"",
+            longitude:""
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);  
         this.manage=this.manage.bind(this);
         this.handleshop=this.handleshop.bind(this);
+        this.getMyLocation = this.getMyLocation.bind(this);
+
     }
     manage()
     {
@@ -29,14 +35,32 @@ class Insert extends Component {
 
     componentDidMount()
     {
+       
         fetch(baseUrl+'/distributor')
         .then(response => response.json())
         .then(dishes => {
           this.setState({cat:dishes})
         })
-        .catch(err=>console.log(err))
+        .catch(err=>console.log(err));
+
+        this.getMyLocation();
 
     }
+
+    getMyLocation() {
+        const location = window.navigator && window.navigator.geolocation
+        
+        if (location) {
+          location.getCurrentPosition((position) => {
+            this.setState({
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude,
+            })
+          }, (error) => {
+          })
+        }
+      }
+
 
     handleSubmit(values) {
        
@@ -61,13 +85,14 @@ class Insert extends Component {
 
 
 handleshop(values) {
-       
+       if(this.state.latitude!="")
+       {
     var object={
         name:values.name,
         address: values.address,
         mobile: values.mobile,
-        latitude: values.latitude,
-        longitude:values.longitude,
+        latitude: this.state.latitude,
+        longitude:this.state.longitude,
       }
    fetch( baseUrl+'/centre',{
         method:"POST",
@@ -77,6 +102,11 @@ handleshop(values) {
     .then(data=>data.json())
     .then(data=>alert(data.status))
     .catch(err=>console.log(err))
+}
+else
+{
+    alert("allow location access!!");
+}
     
 };
 
@@ -88,7 +118,6 @@ handleshop(values) {
                    <div  style={{flexDirection:'row'}}>
                       <h3>Customer</h3>
                      
-                   
                       <Link to={`/helloseed`} >
                       <Button  style={{margin:20}}> Seed</Button>
                       </Link>
@@ -105,13 +134,13 @@ handleshop(values) {
 
                    
                    
-                    <Link to={`/helloorders`} >
-                        <Button style={{margin:20}} >Orders</Button>
+                    <Link to={`/helloshop`} >
+                        <Button style={{margin:20}} >Shop</Button>
                     </Link>
                    
 
-                    <Link to={`/hellodayreport`} >
-                        <Button style={{margin:20}} >Monthly Report</Button>
+                    <Link to={`/helloquestion`} >
+                        <Button style={{margin:20}} >Question</Button>
                     </Link>
 
                     <hr/>
@@ -315,47 +344,9 @@ handleshop(values) {
                                </Row>
 
     
-<Row className="form-group">   
-<Label htmlFor="latitude">Latitude</Label>
-         <Control.text model=".latitude" id="latitude" name="latitude"
-              className="form-control"
-              validators={{
-                 required, minLength: minLength(1)
-             }}
-             />
-              <Errors
-             className="text-danger"
-             model="latitude"
-             show="touched"
-             messages={{
-                 required: 'Required',
-                 minLength: 'Must be greater than 1 characters'                        
-             }}
-          />
+                               <h4>latitude:{this.state.latitude}</h4>
+                               <h4>longitude:{this.state.longitude}</h4>
 
-</Row>
-
-<Row className="form-group">   
-<Label htmlFor="longitude">Longitude</Label>
-         <Control.text model=".longitude" id="longitude" name="longitude"
-              className="form-control"
-              validators={{
-                 required, minLength: minLength(1)
-             }}
-             />
-              <Errors
-             className="text-danger"
-             model="longitude"
-             show="touched"
-             messages={{
-                 required: 'Required',
-                 minLength: 'Must be greater than 1 characters'                        
-             }}
-          />
-
-</Row>
-
-        
                             <Row className="form-group">
                                
                                     <Button type="submit" color="primary">

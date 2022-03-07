@@ -11,7 +11,7 @@ const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
 
-class Orders extends Component {
+class Shop extends Component {
 constructor(props){
     super()
     this.state={
@@ -263,4 +263,4 @@ handleSubmit({values,data}) {
     );
   }
 }
-export default Orders;
+export default Shop;

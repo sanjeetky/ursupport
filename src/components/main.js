@@ -4,8 +4,8 @@ import Seed from './seed.js';
 import Fertilizer from './fertilizer';
 import Insecticide from './insecticide';
 import Equipment from './equipment.js';
-import Orders from './orders.js';
-import Manage from './manage.js';
+import Shop from './shop.js';
+import Question  from './question.js';
 import Dayreport from './dayreport';
 import User from './user';
 
@@ -84,9 +84,9 @@ componentDidMount()
             );
           };
 
-          const ManagementPage = () => {
+          const QuestionPage = () => {
             return(
-                <Manage  />
+                <Question  />
             );
           };
 
@@ -97,9 +97,9 @@ componentDidMount()
           };
 
 
-          const OrdersPage = () => {
+          const ShopPage = () => {
             return(
-                <Orders />
+                <Shop />
             );
           };
 
@@ -121,11 +121,11 @@ componentDidMount()
                    <Route exact path='/hellofertilizer' component={FertilizerPage} />
                    <Route exact path='/helloinsecticide' component={InsecticidePage} />
                    <Route exact path='/helloequipment' component={EquipmentPage} />
-                   <Route exact path='/helloorders' component={OrdersPage} />
+                   <Route exact path='/helloshop' component={ShopPage} />
 
                    <Route exact path='/hellodayreport' component={DayreportPage} />
                    <Route exact path='/hellodelivery' component={DeliveryPage} />
-                   <Route exact path='/hellomanagement' component={ManagementPage} />
+                   <Route exact path='/helloquestion' component={QuestionPage} />
                    
 
                    <Redirect to="/admin" />
